@@ -1,25 +1,25 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Doks"
+title = "Gnosis AMM Documentation"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+titleAddition = "Just Win"
+description = "Description."
 
 ## Open Graph + Twitter Cards
 images = ["doks.png"]
-twitterSite = "henkverlinde"
-twitterCreator = "henkverlinde"
-facebookAuthor = "verlinde.henk"
-facebookPublisher = "verlinde.henk"
+twitterSite = ""
+twitterCreator = ""
+facebookAuthor = ""
+facebookPublisher = ""
 ogLocale = "en_US"
 
 ## JSON-LD
 schemaType = "Organization"
 schemaLogo = "logo-doks.png"
-schemaTwitter = "https://twitter.com/henkverlinde"
-schemaLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaGitHub = "https://github.com/h-enk"
+schemaTwitter = ""
+schemaLinkedIn = ""
+schemaGitHub = ""
 schemaSection = "blog"
 
 ## Sitelinks Search Box
@@ -36,11 +36,11 @@ portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
 
 # Footer
-footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
+footer = "Powered by the Just Win team. Funded by Gnosis."
 
 # Alert
 alert = false
-alertText = "Like Doks? <a class=\"alert-link\" href=\"https://github.com/h-enk/doks/stargazers\">Star on GitHub</a>. Thanks!</a>"
+alertText = "You Just Win"
 
 # Edit Page
 docsRepo = "https://github.com/h-enk/doks"

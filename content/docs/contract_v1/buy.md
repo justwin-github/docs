@@ -1,14 +1,13 @@
 ---
-title: "Introduction"
-description: "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
-lead: "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+title: "buy"
+description: "Lorem ipsum Description."
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false
 images: []
 menu:
   docs:
-    parent: "prologue"
+    parent: "contract_v1"
 weight: 100
 toc: true
 ---
@@ -27,7 +26,6 @@ Step-by-step instructions on how to start a new Doks project. [Tutorial →](htt
 
 {{< alert icon="👉" text="The Quick Start is intended for intermediate to advanced users." >}}
 
-One page summary of how to start a new Doks project. [Quick Start →]({{< ref "quick-start" >}})
 
 ## Go further
 
@@ -55,4 +53,3 @@ Find out how to contribute to Doks. [Contributing →](https://getdoks.org/docs/
 
 ## Help
 
-Get help on Doks. [Help →]({{< ref "how-to-update" >}})
