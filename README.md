@@ -1,2 +1,1 @@
-# docs
-Our docs page
+The readme.

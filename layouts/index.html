@@ -1,0 +1,60 @@
+{{ define "main" }}
+<section class="section container-fluid mt-n3 pb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-12 text-center">
+      <h1 class="mt-0">{{ .Title }}</h1>
+    </div>
+    <div class="col-lg-9 col-xl-8 text-center">
+      <p class="lead">{{ .Params.Lead | safeHTML }}</p>
+      <img src="https://justwin-github.github.io/justwin-github.github.io/gnosis.png" width="100">
+      <br>
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ "docs/overview/introduction/" | absURL }}" role="button">Read the docs</a>
+      <p class="meta">Open-source MIT Licensed. <a href="https://justwin-github.github.io/">GitHub v{{ .Site.Data.doks.version }}</a></p>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+<section class="section section-sm">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-5">
+        <h2 class="h4">What are prediction markets?</h2>
+        <p>Used for many things.</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">What are Automated Market Makers?</h2>
+        <p>Cool Pants.</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">How are AMMs and prediction markets related?</h2>
+        <p>Satoshi is satoshi.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-5">
+        <h2 class="h4">What is the LP problem?</h2>
+        <p>Lorem Ipsum</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">Solutions to the LP problem.</h2>
+        <p>Lorem Ipsum dipsum dim sum</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">Funding from</h2>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-footer" }}
+<section class="section section-sm container-fluid">
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-9">
+      {{- .Content -}}
+    </div>
+  </div>
+</section>
+{{ end }}
