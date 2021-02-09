@@ -1,7 +1,7 @@
 ---
 title: "Setup"
-description: "Solutions to common problems."
-lead: "Solutions to common problems."
+description: ""
+lead: ""
 date: 2020-11-12T15:22:20+01:00
 lastmod: 2020-11-12T15:22:20+01:00
 draft: false
@@ -9,7 +9,7 @@ images: []
 menu: 
   docs:
     parent: "Developer Guide"
-weight: 4
+weight: 34
 toc: true
 ---
 

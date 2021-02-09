@@ -1,6 +1,6 @@
 ---
 title: "Interacting with contracts"
-description: "Lorem ipsum Description."
+description: ""
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false
@@ -8,7 +8,7 @@ images: []
 menu:
   docs:
     parent: "tutorial"
-weight: 5
+weight: 25
 toc: true
 ---
 
@@ -18,7 +18,7 @@ You should now have deployed three contracts: The LsLMSR, FakeDai, and Condition
 
 If you click on the deployed instance of the FakeDai contract, you should have a number of functions available. The orange functions are transactions that you can send, whilst the blue functions are view functions. 
 
-![](https://lh3.googleusercontent.com/o1a_A8BGcumEd6-MIYGyZcHO28DRCn37lR2WTkrw80cR0vcbfCUgQ-FN_LINXLlIlNOvEwQW-0IWgtDFofyW7NiFdoDvnoQ81g6feTFhFNuVxxCIAH9heF812758c13xli66lUii)
+<img src="https://lh3.googleusercontent.com/o1a_A8BGcumEd6-MIYGyZcHO28DRCn37lR2WTkrw80cR0vcbfCUgQ-FN_LINXLlIlNOvEwQW-0IWgtDFofyW7NiFdoDvnoQ81g6feTFhFNuVxxCIAH9heF812758c13xli66lUii" alt="compile" width="100%"/>
 
 These functions are found on all ERC20 token contracts with the exception of the mint function. This mint function is a debugging function and takes two parameters, the 'account' and the 'amount'. You will need to enter your address in order to receive the tokens, this address can be found near the top of the remix interface. The 'amount' that you enter will need to include the appropriate number of decimals for the token you are using. If we want to create 1000 Dai (which has 18 decimals), we will therefore need to put the amount as 100000000000000000000. 
 

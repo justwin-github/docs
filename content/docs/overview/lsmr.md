@@ -1,7 +1,7 @@
 ---
 title: "LSMR & LS-LSMR"
-description: "On Logarithmic Market Scoring Rules (LMSR) and Liquidity Sensitive LSMRs ."
-lead: "On Logarithmic Market Scoring Rules (LMSR) and Liquidity Sensitive LSMRs."
+description: ""
+lead: ""
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -9,7 +9,7 @@ images: []
 menu:
   docs:
     parent: "overview"
-weight: 110
+weight: 7
 toc: true
 ---
 

@@ -8,13 +8,13 @@ images: []
 menu:
   docs:
     parent: "tutorial"
-weight: 2
+weight: 22
 toc: true
 ---
 
 [Remix](https://remix.ethereum.org/) is a browser ethereum IDE and will be utilised for this tutorial.
 
-![](https://lh6.googleusercontent.com/FP3y1YVOgR1UEvw6ABpka3BFt7oli9mBDBBjfpPMNlOZranDskMsxxFY2iu3Y5O5UBU3Xu3MePm5NGFR6jBoNuGbO3TyVmnNv3aCD9VLhjG6BwnmtcSqtiiSOBMpgt4gz2SUTdFY)
+![](https://lh6.googleusercontent.com/FP3y1YVOgR1UEvw6ABpka3BFt7oli9mBDBBjfpPMNlOZranDskMsxxFY2iu3Y5O5UBU3Xu3MePm5NGFR6jBoNuGbO3TyVmnNv3aCD9VLhjG6BwnmtcSqtiiSOBMpgt4gz2SUTdFY )
 
 You will be greeted with this page and can click on "gist" in order to import the smart contracts.
 

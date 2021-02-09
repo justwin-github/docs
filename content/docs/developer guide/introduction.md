@@ -9,11 +9,11 @@ images: []
 menu: 
   docs:
     parent: "Developer Guide"
-weight: 1
+weight: 31
 toc: true
 ---
 
-Our github page is found at <https://github.com/abdullathedruid/lslmsr>
+Our github page is found at [here](https://github.com/abdullathedruid/lslmsr).
 
 There are five contracts included:
 

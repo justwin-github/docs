@@ -9,7 +9,7 @@ images: []
 menu:
   docs:
     parent: "tutorial"
-weight: 7
+weight: 27
 toc: true
 ---
 
@@ -17,7 +17,7 @@ You are able to deploy the contracts to any network using remix. If you adjust t
 
 With gas costs being as expensive as they are now, we would recommend trying the contracts on any testnet network such as Kovan or alternatively on xDai chain (please follow the guide [here](https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup) to connect with metamask)
 
-You can receive xDai from the faucet at the following link: <https://xdai-faucet.top/>
+You can receive xDai from the faucet at this [link](https://xdai-faucet.top/)
 
 For these networks, the conditional tokens contract has already been deployed and can be found at the following addresses:
 

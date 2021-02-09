@@ -8,12 +8,13 @@
       <p class="lead">{{ .Params.Lead | safeHTML }}</p>
       <img src="https://justwin-github.github.io/justwin-github.github.io/gnosis.png" width="100">
       <br>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ "docs/overview/introduction/" | absURL }}" role="button">Read the docs</a>
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ "docs/overview/prediction-markets/" | absURL }}" role="button">Read the docs</a>
       <p class="meta">Open-source MIT Licensed. <a href="https://justwin-github.github.io/">GitHub v{{ .Site.Data.doks.version }}</a></p>
     </div>
   </div>
 </section>
 {{ end }}
+
 
 {{ define "sidebar-prefooter" }}
 <section class="section section-sm">
@@ -21,28 +22,29 @@
     <div class="row justify-content-center text-center">
       <div class="col-lg-5">
         <h2 class="h4">What are prediction markets?</h2>
-        <p>Used for many things.</p>
+        <p>Prediction markets are exchange-traded markets created for the purpose of trading the outcome of events.</p>
       </div>
       <div class="col-lg-5">
-        <h2 class="h4">What are Automated Market Makers?</h2>
-        <p>Cool Pants.</p>
+        <h2 class="h4">What are Automated Market Makers (AMMs)?</h2>
+        <p>Automated Market Makers in the context of decentralised finance are liquidity pools that that allow digital assets to be traded in a permissionless and automatic way rather than a traditional market of buyers and sellers.</p>
       </div>
       <div class="col-lg-5">
         <h2 class="h4">How are AMMs and prediction markets related?</h2>
-        <p>Satoshi is satoshi.</p>
+        <p>While AMM based digital asset exchanges have grown in popularity significantly, prediction markets have lagged behind. Part of the reason why is that liquidity providers are not adequately incentivised to provide liquidity to an AMM.</p>
       </div>
     </div>
     <div class="row justify-content-center text-center">
       <div class="col-lg-5">
-        <h2 class="h4">What is the LP problem?</h2>
-        <p>Lorem Ipsum</p>
+        <h2 class="h4">Why are LPs not incentivised to provide liquidity to prediction markets? </h2>
+        <p>Prediction markets necessarily resolve to zero for all outcomes except one. This means that liquidity providers (LPs) are exposed to significant losses, as they are essentially betting that all market participants are wrong in their bets.</p>
       </div>
       <div class="col-lg-5">
-        <h2 class="h4">Solutions to the LP problem.</h2>
-        <p>Lorem Ipsum dipsum dim sum</p>
+        <h2 class="h4">What are some solutions to the LP problem in prediction markets?</h2>
+        <p>The AMM formula that is used for decentralised exchanges is not adequate for prediction markets. New methods should be explored that help financially incentivise liquidity providers.</p>
       </div>
       <div class="col-lg-5">
-        <h2 class="h4">Funding from</h2>
+        <h2 class="h4">Implementations of possible approaches</h2>
+         <p>We implement two methods from academic literature in Solidity: the Logarithmic Market Scoring Rules and the Liquidity Sensitive Logarithmic Market Scoring Rules.</p>
       </div>
     </div>
   </div>
