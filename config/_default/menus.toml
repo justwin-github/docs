@@ -5,16 +5,16 @@
   url = "/docs/overview/"
 
 [[docs]]
-  name = "Contract V1"
-  weight = 55
-  identifier = "contract_v1"
-  url = "/docs/contract_v1/"
+  name = "Developer Guide"
+  weight = 60
+  identifier = "Developer Guide"
+  url = "/docs/developer-guide/"
 
 [[docs]]
-  name = "Help"
-  weight = 60
-  identifier = "help"
-  url = "/docs/help/"
+  name = "Tutorial"
+  weight = 55
+  identifier = "tutorial"
+  url = "/docs/tutorial/"
 
 [[main]]
   name = "Docs"
