@@ -13,8 +13,14 @@ weight: 38
 toc: true
 ---
 
-*code*
-
+```
+function price(
+    uint256 _outcome,
+    int128 _amount
+  ) public view returns (int128) {
+    return cost_after_buy(_outcome, _amount) - current_cost;
+  }
+```
 This function takes the same parameters as buy().
 
 It will tell you the price to buy that number of outcome tokens and is denominated in the base currency.

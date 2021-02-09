@@ -13,8 +13,39 @@ weight: 34
 toc: true
 ---
 
-*code goes here*
+```
+function setup(
+    address _oracle,
+    uint _numOutcomes,
+    uint _subsidy,
+    uint _overround
+  ) public onlyOwner() {
+    require(init == false,'Already init');
+    require(_overround > 0,'Cannot have 0 overround');
+    CT.prepareCondition(_oracle, bytes32(uint256(address(this))), _numOutcomes);
+    condition = CT.getConditionId(_oracle, bytes32(uint256(address(this))), _numOutcomes);
+    console.logBytes32(bytes32(uint256(address(this))));
 
+    IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy);
+
+    numOutcomes = _numOutcomes;
+    int128 n = ABDKMath.fromUInt(_numOutcomes);
+    int128 initial_subsidy = getTokenEth(token, _subsidy);
+
+    int128 overround = ABDKMath.divu(_overround, 10000);
+    alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n)));
+    b = ABDKMath.mul(ABDKMath.mul(initial_subsidy, n), alpha);
+
+    for(uint i=0; i<_numOutcomes; i++) {
+      q.push(initial_subsidy);
+    }
+
+    init = true;
+
+    total_shares = ABDKMath.mul(initial_subsidy, n);
+    current_cost = cost();
+  }
+```
 This function allows you to customise the parameters used by the market maker in employing the Ls LMSR algorithm.
 
 This function can only be called by the contract deployer and it is necessary to be called before it is possible to trade with the market maker.

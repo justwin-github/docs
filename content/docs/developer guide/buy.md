@@ -1,5 +1,5 @@
 ---
-title: "Setup"
+title: "Buy"
 description: "Solutions to common problems."
 lead: "Solutions to common problems."
 date: 2020-11-12T15:22:20+01:00
@@ -13,7 +13,48 @@ weight: 34
 toc: true
 ---
 
-*code goes here*
+```
+function buy(
+    uint256 _outcome,
+    int128 _amount
+  ) public onlyAfterInit() returns (int128 _price){
+    int128 sum_total;
+    require(_outcome > 0);
+    require(CT.payoutDenominator(condition) == 0, 'Market already resolved');
+
+    for(uint j=0; j<numOutcomes; j++) {
+      if((_outcome & (1<<j)) != 0) {
+        q[j] = ABDKMath.add(q[j], _amount);
+        total_shares = ABDKMath.add(total_shares, _amount);
+      }
+    }
+
+    b = ABDKMath.mul(total_shares, alpha);
+
+    for(uint i=0; i< numOutcomes; i++) {
+      sum_total = ABDKMath.add(sum_total,
+        ABDKMath.exp(
+          ABDKMath.div(q[i], b)
+          ));
+    }
+
+    int128 new_cost = ABDKMath.mul(b,ABDKMath.ln(sum_total));
+    _price = ABDKMath.sub(new_cost,current_cost);
+    current_cost = new_cost;
+
+    uint token_cost = getTokenWei(token, _price);
+    uint n_outcome_tokens = getTokenWei(token, _amount);
+    require(IERC20(token).transferFrom(msg.sender, address(this), token_cost),
+      'Error transferring tokens');
+    IERC20(token).approve(address(CT), getTokenWei(token, _amount));
+    CT.splitPosition(IERC20(token), bytes32(0), condition,
+      getPositionAndDustPositions(_outcome), n_outcome_tokens);
+    uint pos = CT.getPositionId(IERC20(token),
+    CT.getCollectionId(bytes32(0), condition, _outcome));
+    CT.safeTransferFrom(address(this), msg.sender,
+      pos, n_outcome_tokens, '');
+  }
+```
 
 This function allows you to customise the parameters used by the market maker in employing the Ls LMSR algorithm.
 
