@@ -1,4 +1,5 @@
-baseurl = "/"
+baseURL = "https://docs.just.win"
+publishDir = "docs"
 disableAliases = true
 disableHugoGeneratorInject = true
 enableEmoji = true
