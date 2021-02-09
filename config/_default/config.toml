@@ -1,4 +1,4 @@
-baseURL = "https://docs.just.win"
+baseURL = "https://docs.just.win/"
 publishDir = "docs"
 disableAliases = true
 disableHugoGeneratorInject = true
