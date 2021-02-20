@@ -1,7 +1,7 @@
 ---
 title: "Constructor"
 description: "Solutions to common problems."
-lead: "Solutions to common problems."
+lead: ""
 date: 2020-11-12T15:22:20+01:00
 lastmod: 2020-11-12T15:22:20+01:00
 draft: false
@@ -12,8 +12,6 @@ menu:
 weight: 33
 toc: true
 ---
-
-*code goes here*
 
 When deploying the contract, you are required to supply two addresses:
 
