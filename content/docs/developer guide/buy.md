@@ -55,21 +55,13 @@ function buy(
       pos, n_outcome_tokens, '');
   }
 ```
+This function is used by users to buy outcome tokens from the automated market maker. It needs to be provided with the outcome that the user wishes to buy tokens for and the amount.
 
-This function allows you to customise the parameters used by the market maker in employing the Ls LMSR algorithm.
+`_outcome` is an integer representation of the bitwise array for the particular outcome that the user is betting on. This is described well within the Gnosis documentation here. We expect it would be easier when implementing this within a project to calculate this value within the front-end interface as it will be complicated for users.
 
-This function can only be called by the contract deployer and it is necessary to be called before it is possible to trade with the market maker.
+`_amount` is a fixed point decimal representation of the amount of outcome tokens that the user wishes to buy. We note here that 1 outcome token pays off 1 token of the base currency, so there will be significant differences between tokens such as wBTC and dai in terms of their price. If you wish to buy one outcome token, you will need to enter `18446744073709551616` which is 1 * 2^64. Again, we expect this to be abstracted away from users with a front-end interface.
 
-`_oracle`: this is the address that is required to report the outcome of the prediction market at resolution. It can either be an externally owned account or a reference to another smart contract. This does not need to be the same as the person that deployed the contract. There are a variety of approaches that can be used for choosing the oracle and we discuss these further below.
+Behind the scenes, the contract is taking some of the collateral token and splitting it into different outcome tokens. For example, if an event has three outcomes and a user is trying to buy 10 Dai worth of tokens, then it will take 10 dai and split that into the following positions: 10Dai:(A), 10Dai:(B) and 10Dai:(C).
+If the user chose outcome A, then he will need to buy the 10Dai:(A) tokens from the market maker. The market maker determines the price for this based on the LsLMSR algorithm.
 
-`_numOutcomes`: an integer representing the number of discrete outcomes available for the market.
-
-`_subsidy`: this represents the total amount of tokens that will be used to fund the market maker and can be viewed as the initial liquidity. The properties of the LsLMSR are such that choosing large numbers for _subsidy (ie where you fund the market maker with large amounts of capital) provides a tighter spread for traders, however results in higher potential losses (bounded loss is proportional to initial capital)
-
-`_overround`: this represents the amount of profit that can be made by the market maker or the 'houses edge'. It is expressed in 'bips' where a value of 100 is equivalent to 1% profit. For reference, traditional book makers use an overround of between 5 and 10%. It is worth noting here that the calculations used by LsLMSR involve exponential arithmetic. Where the overround value is small, it is possible for the calculation to overflow (this is a limitation of the ethereum virtual machine). We would therefore recommend the minimum overround to be set at 3% but the actual minimum will be dependent on the number of outcomes available.
-
-In order for the oracle to report the outcome of the prediction market, it must call the function `reportPayouts()` found on the conditional tokens contract. This can either be done directly where the oracle is an externally owned account, or by a separate smart contract.
-
-It is possible to write additional smart contracts that can interact with chainlink nodes or kleros arbitration and parse this information in a manner that can be reported to the conditional tokens contract.
-
-Through the clever use of smart contracts, any information that can be brought on-chain can be used to create a prediction market. 
+If the user chose the correct outcome, he can convert his tokens into 10Dai and will have made a profit. The profit will be the difference between the price he was charged by the market maker and the value of the 10 Dai. If he is incorrect, then his tokens will be worthless and the market maker will be able to redeem the positions which have value and will have also profited from the price that the user paid for the trade. 
