@@ -37,6 +37,8 @@ Now you will need to select the LsLMSR and run the setup() function. This has a 
 
 -   _oracle will be an address that refers to either an externally owned address, or a smart contract. The prediction market will remain open until this oracle address tells the prediction market what the outcome of the event was. We invite you to read the oracle page for different ideas of what to put here. For our testing purposes, we can use the address for our account. This will be easy for us to report the outcome at the end of our tutorial
 
+-   _questionId is a unique ID that refers to this particular market. You can input anything here as long as it conforms to the bytes32 type. This ID will be used by the oracle to report the outcome.
+
 -   _numOutcomes is an integer which represents the number of different outcomes that are available. For example, the number of outcomes for a football match would be 3: home team win, away team win, draw. It is worth mentioning at this point, that the conditional tokens allow users to bet on combinations such as either home team winning or draw occurring however the number of discrete outcomes remains 3.
 
 -   _subsidy is an integer which represents how much initial funding is available for the prediction market in order to create the prices. There is a trade-off to be made within the LsLMSR algorithm. More initial funding results in a more liquid market, however it increases the potential losses as the bounded loss is proportional to the initial liquidity.
@@ -46,6 +48,8 @@ Now you will need to select the LsLMSR and run the setup() function. This has a 
 Let us make a prediction market for the Superbowl.
 
 _oracle will be our address. This means that we will be responsible for correctly reporting on the outcome after the superbowl.
+
+_questionId will be the bytes32 representation of the word 'test'.
 
 _numOutcomes will be 3: For Buccaneers win, Chiefs win, draw. 
 
@@ -97,7 +101,7 @@ Congratulations, you've just bought your tokens from the market maker.
 
 As we set the oracle for the contract to be our address, we are able to set the outcome of the market. We do this by calling the reportPayouts() function found within the conditional tokens contract. We must input the questionId and the outcome.
 
-The questionId will be the address of the LsLMSR contract. You need to convert this into bytes32 notation and can do this with the AddToBytes() function found within the LsLMSR. For me, this looks like 0x000000000000000000000000d7acd2a9fd159e69bb102a1ca21c9a3e3a5f771b and is simply the address padded with an appropriate number of zeros.
+The questionId is the ID that we used earlier. 
 
 The payout variable takes an array of the relative payout for each outcome. As we chose three outcomes, we will need to enter an array with three variables here. If you wanted to report that the Chiefs won, you will enter this outcome as a 1 (which means each outcome token can be redeemed for 1 base currency) and the rest as zero. 
 

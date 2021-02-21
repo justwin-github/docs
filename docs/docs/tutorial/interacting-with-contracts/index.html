@@ -175,6 +175,9 @@ Creating tokens to play with If you click on the deployed instance of the FakeDa
 <p>_oracle will be an address that refers to either an externally owned address, or a smart contract. The prediction market will remain open until this oracle address tells the prediction market what the outcome of the event was. We invite you to read the oracle page for different ideas of what to put here. For our testing purposes, we can use the address for our account. This will be easy for us to report the outcome at the end of our tutorial</p>
 </li>
 <li>
+<p>_questionId is a unique ID that refers to this particular market. You can input anything here as long as it conforms to the bytes32 type. This ID will be used by the oracle to report the outcome.</p>
+</li>
+<li>
 <p>_numOutcomes is an integer which represents the number of different outcomes that are available. For example, the number of outcomes for a football match would be 3: home team win, away team win, draw. It is worth mentioning at this point, that the conditional tokens allow users to bet on combinations such as either home team winning or draw occurring however the number of discrete outcomes remains 3.</p>
 </li>
 <li>
@@ -186,6 +189,7 @@ Creating tokens to play with If you click on the deployed instance of the FakeDa
 </ul>
 <p>Let us make a prediction market for the Superbowl.</p>
 <p>_oracle will be our address. This means that we will be responsible for correctly reporting on the outcome after the superbowl.</p>
+<p>_questionId will be the bytes32 representation of the word &lsquo;test&rsquo;.</p>
 <p>_numOutcomes will be 3: For Buccaneers win, Chiefs win, draw. </p>
 <p>_subsidy will be 1000000000000000000000 - this represents 1000 Dai in initial funding</p>
 <p>_overround will be 450. This books us 4.5% profit</p>
@@ -211,7 +215,7 @@ Creating tokens to play with If you click on the deployed instance of the FakeDa
 <p>Congratulations, you&rsquo;ve just bought your tokens from the market maker.</p>
 <h3 id="reporting-payout-and-claiming-rewards">Reporting payout and claiming rewards<a href="#reporting-payout-and-claiming-rewards" class="anchor" aria-hidden="true">#</a> </h3>
 <p>As we set the oracle for the contract to be our address, we are able to set the outcome of the market. We do this by calling the reportPayouts() function found within the conditional tokens contract. We must input the questionId and the outcome.</p>
-<p>The questionId will be the address of the LsLMSR contract. You need to convert this into bytes32 notation and can do this with the AddToBytes() function found within the LsLMSR. For me, this looks like 0x000000000000000000000000d7acd2a9fd159e69bb102a1ca21c9a3e3a5f771b and is simply the address padded with an appropriate number of zeros.</p>
+<p>The questionId is the ID that we used earlier.</p>
 <p>The payout variable takes an array of the relative payout for each outcome. As we chose three outcomes, we will need to enter an array with three variables here. If you wanted to report that the Chiefs won, you will enter this outcome as a 1 (which means each outcome token can be redeemed for 1 base currency) and the rest as zero. </p>
 <p><img src="https://lh4.googleusercontent.com/oaoc1rOrI99WmV97cEG2gpDtik1cgjOmRux5Pu7eXEcK-Oj43159ec6S53PxL9wYphZgJy1MV65t5Pun2jnTK0c0dNsmWjsvfwl3ha0RPQcDmX89cwhnNqHqFLE3G7tr8lpeCLGu" alt=""></p>
 <p>Now that you have done this, you can claim your reward for the successful portion of your position. You do this with the redeemPositions() function. This function takes your outcome tokens and then converts them back into the base currency token. The redeemPositions() function takes the following parameters:</p>
@@ -273,7 +277,7 @@ Creating tokens to play with If you click on the deployed instance of the FakeDa
 </footer>
     
     <script src="https://docs.just.win/main.f6b484f556ad1f3bcf6061082139a2f21fa759f13930c39a25fe4a9f78f35e64122c2d86dffd56e67b292dabbda4095d8077194f196e0e348441c106a9f3d40e.js" integrity="sha512-9rSE9VatHzvPYGEIITmi8h&#43;nWfE5MMOaJf5Kn3jzXmQSLC2G3/1W5nspLau9pAldgHcZTxluDjSEQcEGqfPUDg==" crossorigin="anonymous" defer></script>
-  <script src="https://docs.just.win/index.min.1c6c128a1f197402132837552a161644ecaeebc545a18e7c1b0d17302263134a106391f9f61fff385bde33b48b6c50a98c97e30fa157fb237132ce0628702f3c.js" integrity="sha512-HGwSih8ZdAITKDdVKhYWROyu68VFoY58Gw0XMCJjE0oQY5H59h//OFveM7SLbFCpjJfjD6FX&#43;yNxMs4GKHAvPA==" crossorigin="anonymous" defer></script>
+  <script src="https://docs.just.win/index.min.106ddce5d11271fe89ba3033e2bfd339e5c5c32a012e65e97d8e145ca9d8d03a22e9ef305e70b37372b8127e4dea1cdb7f6fa44b8c8b49bfdd58dce5ee6ea505.js" integrity="sha512-EG3c5dEScf6JujAz4r/TOeXFwyoBLmXpfY4UXKnY0Doi6e8wXnCzc3K4En5N6hzbf2&#43;kS4yLSb/dWNzl7m6lBQ==" crossorigin="anonymous" defer></script>
 
   </body>
 </html>
