@@ -1,7 +1,152 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=https://docs.just.win/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://docs.just.win/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><link rel=stylesheet href=https://docs.just.win/main.660bb5b9ab0e383077d84cf52a81bd6555dd48d7e0ea34cd2a8d78aa06b4f119f8aa87d73e84d01e5bda7bc9321a0876fded0b4302ac9e6fed101d952269a98f.css integrity="sha512-Zgu1uasOODB32Ez1KoG9ZVXdSNfg6jTNKo14qga08Rn4qofXPoTQHlvae8kyGgh2/e0LQwKsnm/tEB2VImmpjw==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Buy - AMMs For Prediction Markets</title><meta name=description content="Description."><link rel=canonical href=https://docs.just.win/docs/developer-guide/buy/><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://docs.just.win/doks.png"><meta name=twitter:title content="Buy"><meta name=twitter:description content="function buy( uint256 _outcome, int128 _amount ) public onlyAfterInit() returns (int128 _price){ int128 sum_total; require(_outcome > 0); require(CT.payoutDenominator(condition) == 0, 'Market already resolved'); for(uint j=0; j<numOutcomes; j++) { if((_outcome & (1<<j)) != 0) { q[j] = ABDKMath.add(q[j], _amount); total_shares = ABDKMath.add(total_shares, _amount); } } b = ABDKMath.mul(total_shares, alpha); for(uint i=0; i< numOutcomes; i++) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp( ABDKMath.div(q[i], b) )); } int128 new_cost = ABDKMath.mul(b,ABDKMath.ln(sum_total)); _price = ABDKMath.sub(new_cost,current_cost); current_cost = new_cost; uint token_cost = getTokenWei(token, _price); uint n_outcome_tokens = getTokenWei(token, _amount); require(IERC20(token)."><meta name=twitter:site content="@"><meta name=twitter:creator content="@"><meta property="og:title" content="Buy"><meta property="og:description" content="function buy( uint256 _outcome, int128 _amount ) public onlyAfterInit() returns (int128 _price){ int128 sum_total; require(_outcome > 0); require(CT.payoutDenominator(condition) == 0, 'Market already resolved'); for(uint j=0; j<numOutcomes; j++) { if((_outcome & (1<<j)) != 0) { q[j] = ABDKMath.add(q[j], _amount); total_shares = ABDKMath.add(total_shares, _amount); } } b = ABDKMath.mul(total_shares, alpha); for(uint i=0; i< numOutcomes; i++) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp( ABDKMath.div(q[i], b) )); } int128 new_cost = ABDKMath.mul(b,ABDKMath.ln(sum_total)); _price = ABDKMath.sub(new_cost,current_cost); current_cost = new_cost; uint token_cost = getTokenWei(token, _price); uint n_outcome_tokens = getTokenWei(token, _amount); require(IERC20(token)."><meta property="og:type" content="article"><meta property="og:url" content="https://docs.just.win/docs/developer-guide/buy/"><meta property="og:image" content="https://docs.just.win/doks.png"><meta property="article:published_time" content="2020-11-12T15:22:20+01:00"><meta property="article:modified_time" content="2020-11-12T15:22:20+01:00"><meta property="og:site_name" content="AMMs For Prediction Markets"><meta property="article:publisher" content="https://www.facebook.com/"><meta property="article:author" content="https://www.facebook.com/"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/docs.just.win\/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https:\/\/docs.just.win\/docs\/"},{"@type":"ListItem","position":3,"name":"Developer Guide","item":"https:\/\/docs.just.win\/docs\/developer-guide\/"},{"@type":"ListItem","position":4,"name":"Buy","item":"https:\/\/docs.just.win\/docs\/developer-guide\/buy\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=https://docs.just.win/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://docs.just.win/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://docs.just.win/favicon-16x16.png><link rel=manifest href=https://docs.just.win/site.webmanifest></head><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" type=checkbox id=menu-btn>
-<label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 mr-auto" href=https://docs.just.win/>AMMs For Prediction Markets</a>
-<button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
-<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button><ul class="navbar-nav social-nav order-3 order-md-5"><li class=nav-item><a class=nav-link href=https://github.com/justwin-github><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><span class="ml-2 sr-only">GitHub</span></a></li></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav mr-auto order-5 order-md-2"><li class="nav-item active"><a class=nav-link href=https://docs.just.win/docs/>Docs</a></li></ul><div class="break order-6 d-md-none"></div><form class="navbar-form flex-grow-1 order-7 order-md-3"><input id=userinput class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off><div id=suggestions class="shadow bg-white rounded"></div></form></div></div></header><div class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav class=docs-links aria-label="Main navigation"><h3>Overview</h3><ul class=list-unstyled><li><a class=docs-link href=https://docs.just.win/docs/overview/prediction-markets/>Prediction Markets</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/automated_market_makers/>Automated Market Makers</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/conditional_token/>Conditional Token Framework</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/oracles/>Oracles</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/lsmr/>LSMR & LS-LSMR</a></li></ul><h3>Tutorial</h3><ul class=list-unstyled><li><a class=docs-link href=https://docs.just.win/docs/tutorial/getting-started/>Getting Started</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/import-into-remix/>Import into Remix</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/deploying-contracts/>Deploying Contracts</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/interacting-with-contracts/>Interacting with contracts</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/deploying-to-testnet/>Deploying to Testnet</a></li></ul><h3>Developer Guide</h3><ul class=list-unstyled><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/introduction/>Introduction</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/lslmsr/>LsLMSR</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/constructor/>Constructor</a></li><li><a class="docs-link active" href=https://docs.just.win/docs/developer-guide/buy/>Buy</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/setup/>Setup</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/withdraw/>Withdraw</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/price/>Price</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/cost/>Cost</a></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=page-links><h3>On this page</h3><nav id=TableOfContents></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>Buy</h1><p class=lead></p><pre><code>function buy(
+<!doctype html>
+<html lang="en-US">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preload" as="font" href="https://docs.just.win/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="https://docs.just.win/fonts/vendor/jost/jost-v4-latin-700.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://docs.just.win/main.b89533ff92d426f8efc380489eea2cab4eb2a0640f7f2e60348cffd715db81640893e0edb8dedc16542dc4feb72884c97144bc680a1ef07b49b9dddf0093e6f3.css" integrity="sha512-uJUz/5LUJvjvw4BInuosq06yoGQPfy5gNIz/1xXbgWQIk&#43;DtuN7cFlQtxP63KITJcUS8aAoe8HtJud3fAJPm8w==" crossorigin="anonymous">
+<noscript><style>img.lazyload { display: none; }</style></noscript>
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <title>Buy - AMMs For Prediction Markets</title>
+<meta name="description" content="Description.">
+<link rel="canonical" href="https://docs.just.win/docs/developer-guide/buy/">
+<meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://docs.just.win/doks.png">
+    <meta name="twitter:title" content="Buy">
+<meta name="twitter:description" content="function buy( uint256 _outcome, int128 _amount ) public onlyAfterInit() returns (int128 _price){ int128 sum_total; require(_outcome &gt; 0); require(CT.payoutDenominator(condition) == 0, &#39;Market already resolved&#39;); for(uint j=0; j&lt;numOutcomes; j&#43;&#43;) { if((_outcome &amp; (1&lt;&lt;j)) != 0) { q[j] = ABDKMath.add(q[j], _amount); total_shares = ABDKMath.add(total_shares, _amount); } } b = ABDKMath.mul(total_shares, alpha); for(uint i=0; i&lt; numOutcomes; i&#43;&#43;) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp( ABDKMath.div(q[i], b) )); } int128 new_cost = ABDKMath.mul(b,ABDKMath.ln(sum_total)); _price = ABDKMath.sub(new_cost,current_cost); current_cost = new_cost; uint token_cost = getTokenWei(token, _price); uint n_outcome_tokens = getTokenWei(token, _amount); uint pos = CT.">
+
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+
+<meta property="og:title" content="Buy">
+<meta property="og:description" content="function buy( uint256 _outcome, int128 _amount ) public onlyAfterInit() returns (int128 _price){ int128 sum_total; require(_outcome &gt; 0); require(CT.payoutDenominator(condition) == 0, &#39;Market already resolved&#39;); for(uint j=0; j&lt;numOutcomes; j&#43;&#43;) { if((_outcome &amp; (1&lt;&lt;j)) != 0) { q[j] = ABDKMath.add(q[j], _amount); total_shares = ABDKMath.add(total_shares, _amount); } } b = ABDKMath.mul(total_shares, alpha); for(uint i=0; i&lt; numOutcomes; i&#43;&#43;) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp( ABDKMath.div(q[i], b) )); } int128 new_cost = ABDKMath.mul(b,ABDKMath.ln(sum_total)); _price = ABDKMath.sub(new_cost,current_cost); current_cost = new_cost; uint token_cost = getTokenWei(token, _price); uint n_outcome_tokens = getTokenWei(token, _amount); uint pos = CT.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://docs.just.win/docs/developer-guide/buy/">
+
+  <meta property="og:image" content="https://docs.just.win/doks.png"/>
+    <meta property="article:published_time" content="2020-11-12T15:22:20+01:00">
+  <meta property="article:modified_time" content="2020-11-12T15:22:20+01:00">
+  <meta property="og:site_name" content="AMMs For Prediction Markets">
+
+<meta property="article:publisher" content="https://www.facebook.com/">
+<meta property="article:author" content="https://www.facebook.com/">
+<meta property="og:locale" content="en_US">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position":  1 ,
+        "name": "Home",
+        "item": "https:\/\/docs.just.win\/"
+    },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "name": "Docs",
+        "item": "https:\/\/docs.just.win\/docs\/"
+    },{
+        "@type": "ListItem",
+        "position":  3 ,
+        "name": "Developer Guide",
+        "item": "https:\/\/docs.just.win\/docs\/developer-guide\/"
+    },{
+        "@type": "ListItem",
+        "position":  4 ,
+        "name": "Buy",
+        "item": "https:\/\/docs.just.win\/docs\/developer-guide\/buy\/"
+    }]
+}
+</script>
+
+  <meta name="theme-color" content="#fff">
+<link rel="apple-touch-icon" sizes="180x180" href="https://docs.just.win/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://docs.just.win/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://docs.just.win/favicon-16x16.png">
+<link rel="manifest" href="https://docs.just.win/site.webmanifest">
+  
+</head>
+  <body class="docs single">
+    <div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+  <div class="container">
+    <input class="menu-btn order-0" type="checkbox" id="menu-btn">
+    <label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+    <a class="navbar-brand order-1 order-md-0 mr-auto" href="https://docs.just.win/">AMMs For Prediction Markets</a>
+    <button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+      <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+    </button>
+    <ul class="navbar-nav social-nav order-3 order-md-5">
+      <li class="nav-item">
+          <a class="nav-link" href="https://github.com/justwin-github"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ml-2 sr-only">GitHub</span></a>
+        </li>
+      </ul>
+    <div class="collapse navbar-collapse order-4 order-md-1">
+      <ul class="navbar-nav main-nav mr-auto order-5 order-md-2"><li class="nav-item active">
+            <a class="nav-link" href="https://docs.just.win/docs/">Docs</a>
+          </li>
+        </ul>
+      <div class="break order-6 d-md-none"></div>
+      <form class="navbar-form flex-grow-1 order-7 order-md-3">
+        <input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+        <div id="suggestions" class="shadow bg-white rounded"></div>
+      </form>
+    </div>
+  </div>
+</header>
+    <div class="wrap container" role="document">
+      <div class="content">
+        
+	<div class="row flex-xl-nowrap">
+		<div class="col-lg-5 col-xl-4 docs-sidebar">
+			<nav class="docs-links" aria-label="Main navigation">
+				<h3>Overview</h3>
+  <ul class="list-unstyled">
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/prediction-markets/">Prediction Markets</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/automated_market_makers/">Automated Market Makers</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/conditional_token/">Conditional Token Framework</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/oracles/">Oracles</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/lsmr/">LSMR &amp; LS-LSMR</a></li>
+    </ul>
+  <h3>Tutorial</h3>
+  <ul class="list-unstyled">
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/getting-started/">Getting Started</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/import-into-remix/">Import into Remix</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/deploying-contracts/">Deploying Contracts</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/interacting-with-contracts/">Interacting with contracts</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/deploying-to-testnet/">Deploying to Testnet </a></li>
+    </ul>
+  <h3>Developer Guide</h3>
+  <ul class="list-unstyled">
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/introduction/">Introduction</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/lslmsr/">LsLMSR</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/constructor/">Constructor</a></li>
+    <li><a class="docs-link active" href="https://docs.just.win/docs/developer-guide/buy/">Buy</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/setup/">Setup</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/withdraw/">Withdraw</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/price/">Price</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/cost/">Cost</a></li>
+    </ul>
+  
+			</nav>        
+		</div>
+		<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+			<div class="page-links">
+    <h3>On this page</h3>
+    <nav id="TableOfContents"></nav>
+  </div>
+
+		</nav>
+		<main class="docs-content col-lg-11 col-xl-9">
+		<h1>Buy</h1>
+			<p class="lead">The function used by users to buy outcome tokens from the AMM.</p>
+			<pre><code>function buy(
     uint256 _outcome,
     int128 _amount
   ) public onlyAfterInit() returns (int128 _price){
@@ -31,15 +176,70 @@
 
     uint token_cost = getTokenWei(token, _price);
     uint n_outcome_tokens = getTokenWei(token, _amount);
+    uint pos = CT.getPositionId(IERC20(token),
+      CT.getCollectionId(bytes32(0), condition, _outcome));
+
     require(IERC20(token).transferFrom(msg.sender, address(this), token_cost),
       'Error transferring tokens');
-    IERC20(token).approve(address(CT), getTokenWei(token, _amount));
-    CT.splitPosition(IERC20(token), bytes32(0), condition,
-      getPositionAndDustPositions(_outcome), n_outcome_tokens);
-    uint pos = CT.getPositionId(IERC20(token),
-    CT.getCollectionId(bytes32(0), condition, _outcome));
+
+    if(CT.balanceOf(address(this), pos) &lt; n_outcome_tokens) {
+      IERC20(token).approve(address(CT), getTokenWei(token, _amount));
+      CT.splitPosition(IERC20(token), bytes32(0), condition,
+        getPositionAndDustPositions(_outcome), n_outcome_tokens);
+      }
     CT.safeTransferFrom(address(this), msg.sender,
       pos, n_outcome_tokens, '');
   }
-</code></pre><p>This function is used by users to buy outcome tokens from the automated market maker. It needs to be provided with the outcome that the user wishes to buy tokens for and the amount.</p><p><code>_outcome</code> is an integer representation of the bitwise array for the particular outcome that the user is betting on. This is described well within the Gnosis documentation here. We expect it would be easier when implementing this within a project to calculate this value within the front-end interface as it will be complicated for users.</p><p><code>_amount</code> is a fixed point decimal representation of the amount of outcome tokens that the user wishes to buy. We note here that 1 outcome token pays off 1 token of the base currency, so there will be significant differences between tokens such as wBTC and dai in terms of their price. If you wish to buy one outcome token, you will need to enter <code>18446744073709551616</code> which is 1 * 2^64. Again, we expect this to be abstracted away from users with a front-end interface.</p><p>Behind the scenes, the contract is taking some of the collateral token and splitting it into different outcome tokens. For example, if an event has three outcomes and a user is trying to buy 10 Dai worth of tokens, then it will take 10 dai and split that into the following positions: 10Dai:(A), 10Dai:(B) and 10Dai:(C).
-If the user chose outcome A, then he will need to buy the 10Dai:(A) tokens from the market maker. The market maker determines the price for this based on the LsLMSR algorithm.</p><p>If the user chose the correct outcome, he can convert his tokens into 10Dai and will have made a profit. The profit will be the difference between the price he was charged by the market maker and the value of the 10 Dai. If he is incorrect, then his tokens will be worthless and the market maker will be able to redeem the positions which have value and will have also profited from the price that the user paid for the trade.</p><div class="docs-navigation d-flex justify-content-between"><a href=https://docs.just.win/docs/developer-guide/constructor/><div class="card my-1"><div class="card-body py-2">&larr; Constructor</div></div></a><a class=ml-auto href=https://docs.just.win/docs/developer-guide/setup/><div class="card my-1"><div class="card-body py-2">Setup &rarr;</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by the Just Win team. Funded by Gnosis.</li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-right"><ul class=list-inline></ul></div></div></div></footer><script src=https://docs.just.win/main.f6b484f556ad1f3bcf6061082139a2f21fa759f13930c39a25fe4a9f78f35e64122c2d86dffd56e67b292dabbda4095d8077194f196e0e348441c106a9f3d40e.js integrity="sha512-9rSE9VatHzvPYGEIITmi8h+nWfE5MMOaJf5Kn3jzXmQSLC2G3/1W5nspLau9pAldgHcZTxluDjSEQcEGqfPUDg==" crossorigin=anonymous defer></script><script src=https://docs.just.win/index.min.7d35d666db49980973fd032dde1d0320f6ba9198e5e47c02eecff7f5aced52af13ef20a5ffd2553df6736c566e520941f5f03ffa0452a07ab3b3b0cbeb11f5fb.js integrity="sha512-fTXWZttJmAlz/QMt3h0DIPa6kZjl5HwC7s/39aztUq8T7yCl/9JVPfZzbFZuUglB9fA/+gRSoHqzs7DL6xH1+w==" crossorigin=anonymous defer></script></body></html>
+</code></pre><p>This function is used by users to buy outcome tokens from the automated market maker. It needs to be provided with the outcome that the user wishes to buy tokens for and the amount.</p>
+<p><code>_outcome</code> is an integer representation of the bitwise array for the particular outcome that the user is betting on. This is described well within the Gnosis documentation here. We expect it would be easier when implementing this within a project to calculate this value within the front-end interface as it will be complicated for users.</p>
+<p><code>_amount</code> is a fixed point decimal representation of the amount of outcome tokens that the user wishes to buy. We note here that 1 outcome token pays off 1 token of the base currency, so there will be significant differences between tokens such as wBTC and dai in terms of their price. If you wish to buy one outcome token, you will need to enter <code>18446744073709551616</code> which is 1 * 2^64. Again, we expect this to be abstracted away from users with a front-end interface.</p>
+<p>Behind the scenes, the contract is taking some of the collateral token and splitting it into different outcome tokens. For example, if an event has three outcomes and a user is trying to buy 10 Dai worth of tokens, then it will take 10 dai and split that into the following positions: 10Dai:(A), 10Dai:(B) and 10Dai:(C).
+If the user chose outcome A, then he will need to buy the 10Dai:(A) tokens from the market maker. The market maker determines the price for this based on the LsLMSR algorithm.</p>
+<p>If the user chose the correct outcome, he can convert his tokens into 10Dai and will have made a profit. The profit will be the difference between the price he was charged by the market maker and the value of the 10 Dai. If he is incorrect, then his tokens will be worthless and the market maker will be able to redeem the positions which have value and will have also profited from the price that the user paid for the trade.</p>
+
+			<div class="docs-navigation d-flex justify-content-between">
+	
+	<a href="https://docs.just.win/docs/developer-guide/constructor/">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					&larr; Constructor
+				</div>
+			</div>
+		</a>
+	<a class="ml-auto" href="https://docs.just.win/docs/developer-guide/setup/">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					Setup &rarr;
+				</div>
+			</div>
+		</a>
+	</div>
+
+		</main>
+	</div>
+
+      </div>
+    </div>
+    
+    
+    <footer class="footer text-muted">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 order-last order-lg-first">
+        <ul class="list-inline">
+          <li class="list-inline-item">Powered by the Just Win team. Funded by Gnosis.</li>
+        </ul>
+      </div>
+      <div class="col-lg-8 order-first order-lg-last text-lg-right">
+        <ul class="list-inline">
+          </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+    <script src="https://docs.just.win/main.f6b484f556ad1f3bcf6061082139a2f21fa759f13930c39a25fe4a9f78f35e64122c2d86dffd56e67b292dabbda4095d8077194f196e0e348441c106a9f3d40e.js" integrity="sha512-9rSE9VatHzvPYGEIITmi8h&#43;nWfE5MMOaJf5Kn3jzXmQSLC2G3/1W5nspLau9pAldgHcZTxluDjSEQcEGqfPUDg==" crossorigin="anonymous" defer></script>
+  <script src="https://docs.just.win/index.min.1c6c128a1f197402132837552a161644ecaeebc545a18e7c1b0d17302263134a106391f9f61fff385bde33b48b6c50a98c97e30fa157fb237132ce0628702f3c.js" integrity="sha512-HGwSih8ZdAITKDdVKhYWROyu68VFoY58Gw0XMCJjE0oQY5H59h//OFveM7SLbFCpjJfjD6FX&#43;yNxMs4GKHAvPA==" crossorigin="anonymous" defer></script>
+
+  </body>
+</html>

@@ -1,12 +1,12 @@
 ---
 title: "Buy"
 description: ""
-lead: ""
+lead: "The function used by users to buy outcome tokens from the AMM."
 date: 2020-11-12T15:22:20+01:00
 lastmod: 2020-11-12T15:22:20+01:00
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "Developer Guide"
 weight: 34
@@ -44,13 +44,17 @@ function buy(
 
     uint token_cost = getTokenWei(token, _price);
     uint n_outcome_tokens = getTokenWei(token, _amount);
+    uint pos = CT.getPositionId(IERC20(token),
+      CT.getCollectionId(bytes32(0), condition, _outcome));
+
     require(IERC20(token).transferFrom(msg.sender, address(this), token_cost),
       'Error transferring tokens');
-    IERC20(token).approve(address(CT), getTokenWei(token, _amount));
-    CT.splitPosition(IERC20(token), bytes32(0), condition,
-      getPositionAndDustPositions(_outcome), n_outcome_tokens);
-    uint pos = CT.getPositionId(IERC20(token),
-    CT.getCollectionId(bytes32(0), condition, _outcome));
+
+    if(CT.balanceOf(address(this), pos) < n_outcome_tokens) {
+      IERC20(token).approve(address(CT), getTokenWei(token, _amount));
+      CT.splitPosition(IERC20(token), bytes32(0), condition,
+        getPositionAndDustPositions(_outcome), n_outcome_tokens);
+      }
     CT.safeTransferFrom(address(this), msg.sender,
       pos, n_outcome_tokens, '');
   }
@@ -64,4 +68,4 @@ This function is used by users to buy outcome tokens from the automated market m
 Behind the scenes, the contract is taking some of the collateral token and splitting it into different outcome tokens. For example, if an event has three outcomes and a user is trying to buy 10 Dai worth of tokens, then it will take 10 dai and split that into the following positions: 10Dai:(A), 10Dai:(B) and 10Dai:(C).
 If the user chose outcome A, then he will need to buy the 10Dai:(A) tokens from the market maker. The market maker determines the price for this based on the LsLMSR algorithm.
 
-If the user chose the correct outcome, he can convert his tokens into 10Dai and will have made a profit. The profit will be the difference between the price he was charged by the market maker and the value of the 10 Dai. If he is incorrect, then his tokens will be worthless and the market maker will be able to redeem the positions which have value and will have also profited from the price that the user paid for the trade. 
+If the user chose the correct outcome, he can convert his tokens into 10Dai and will have made a profit. The profit will be the difference between the price he was charged by the market maker and the value of the 10 Dai. If he is incorrect, then his tokens will be worthless and the market maker will be able to redeem the positions which have value and will have also profited from the price that the user paid for the trade.

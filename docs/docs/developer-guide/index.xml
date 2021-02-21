@@ -1,20 +1,102 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Overview on</title><link>https://docs.just.win/docs/developer-guide/</link><description>Recent content in Overview on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Wed, 06 Jan 2021 08:49:15 +0000</lastBuildDate><atom:link href="https://docs.just.win/docs/developer-guide/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://docs.just.win/docs/developer-guide/introduction/</link><pubDate>Tue, 06 Oct 2020 08:49:31 +0000</pubDate><guid>https://docs.just.win/docs/developer-guide/introduction/</guid><description>Our github page is found at here.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on </title>
+    <link>https://docs.just.win/docs/developer-guide/</link>
+    <description>Recent content in Overview on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 06 Jan 2021 08:49:15 +0000</lastBuildDate><atom:link href="https://docs.just.win/docs/developer-guide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction</title>
+      <link>https://docs.just.win/docs/developer-guide/introduction/</link>
+      <pubDate>Tue, 06 Oct 2020 08:49:31 +0000</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/introduction/</guid>
+      <description>Our github page is found at here.
 There are five contracts included:
-LsLMSR.sol - the contract to create a prediction market automated market maker using liquidity sensitive LMSR.
-ABDKMath64x64.sol - library enabling fixed point arithmetic (written by ABDK Consulting)
-ConditionalTokens.sol - contract to create conditional tokens (written by Gnosis)
-CTHelpers.sol - helper contract for conditional tokens (written by Gnosis)
-FakeDai.sol - sample ERC20 token to be used for testing</description></item><item><title>LsLMSR</title><link>https://docs.just.win/docs/developer-guide/lslmsr/</link><pubDate>Thu, 12 Nov 2020 13:26:54 +0100</pubDate><guid>https://docs.just.win/docs/developer-guide/lslmsr/</guid><description>Within the LsLMSR there are six functions available for use:
-Constructor: necessary to initiate the prediction market
-Setup: necessary to adjust the parameters on creation and to fund the market maker
-Buy: utilised by traders when they wish to buy outcome tokens
-Withdraw: utilised by the market creator to withdraw their liquidity after the market has resolved
-Cost: returns the total cost basis of the market maker</description></item><item><title>Constructor</title><link>https://docs.just.win/docs/developer-guide/constructor/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://docs.just.win/docs/developer-guide/constructor/</guid><description>When deploying the contract, you are required to supply two addresses:
+  LsLMSR.sol - the contract to create a prediction market automated market maker using liquidity sensitive LMSR.
+  ABDKMath64x64.sol - library enabling fixed point arithmetic (written by ABDK Consulting)
+  ConditionalTokens.sol - contract to create conditional tokens (written by Gnosis)
+  CTHelpers.sol - helper contract for conditional tokens (written by Gnosis)
+  FakeDai.sol - sample ERC20 token to be used for testing</description>
+    </item>
+    
+    <item>
+      <title>LsLMSR</title>
+      <link>https://docs.just.win/docs/developer-guide/lslmsr/</link>
+      <pubDate>Thu, 12 Nov 2020 13:26:54 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/lslmsr/</guid>
+      <description>Within the LsLMSR there are six functions available for use:
+  Constructor: necessary to initiate the prediction market
+  Setup: necessary to adjust the parameters on creation and to fund the market maker
+  Buy: utilised by traders when they wish to buy outcome tokens
+  Withdraw: utilised by the market creator to withdraw their liquidity after the market has resolved
+  Cost: returns the total cost basis of the market maker</description>
+    </item>
+    
+    <item>
+      <title>Constructor</title>
+      <link>https://docs.just.win/docs/developer-guide/constructor/</link>
+      <pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/constructor/</guid>
+      <description>When deploying the contract, you are required to supply two addresses:
 _ct: The address pointing towards the conditional token contract.
 _token: The address pointing towards the ERC-20 token that will be used as the base currency for the market maker.
 The conditional tokens contract have already been deployed by the Gnosis team and can be found at the following addresses:
-Mainnet: 0xC59b0e4De5F1248C1140964E0fF287B192407E0C
-xDai: 0xCeAfDD6bc0bEF976fdCd1112955828E00543c0Ce
-Rinkeby: 0x36bede640D19981A82090519bC1626249984c908</description></item><item><title>Buy</title><link>https://docs.just.win/docs/developer-guide/buy/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://docs.just.win/docs/developer-guide/buy/</guid><description>function buy( uint256 _outcome, int128 _amount ) public onlyAfterInit() returns (int128 _price){ int128 sum_total; require(_outcome &amp;gt; 0); require(CT.payoutDenominator(condition) == 0, 'Market already resolved'); for(uint j=0; j&amp;lt;numOutcomes; j++) { if((_outcome &amp;amp; (1&amp;lt;&amp;lt;j)) != 0) { q[j] = ABDKMath.add(q[j], _amount); total_shares = ABDKMath.add(total_shares, _amount); } } b = ABDKMath.mul(total_shares, alpha); for(uint i=0; i&amp;lt; numOutcomes; i++) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp( ABDKMath.div(q[i], b) )); } int128 new_cost = ABDKMath.mul(b,ABDKMath.ln(sum_total)); _price = ABDKMath.sub(new_cost,current_cost); current_cost = new_cost; uint token_cost = getTokenWei(token, _price); uint n_outcome_tokens = getTokenWei(token, _amount); require(IERC20(token).</description></item><item><title>Setup</title><link>https://docs.just.win/docs/developer-guide/setup/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://docs.just.win/docs/developer-guide/setup/</guid><description>function setup( address _oracle, uint _numOutcomes, uint _subsidy, uint _overround ) public onlyOwner() { require(init == false,'Already init'); require(_overround &amp;gt; 0,'Cannot have 0 overround'); CT.prepareCondition(_oracle, bytes32(uint256(address(this))), _numOutcomes); condition = CT.getConditionId(_oracle, bytes32(uint256(address(this))), _numOutcomes); console.logBytes32(bytes32(uint256(address(this)))); IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy); numOutcomes = _numOutcomes; int128 n = ABDKMath.fromUInt(_numOutcomes); int128 initial_subsidy = getTokenEth(token, _subsidy); int128 overround = ABDKMath.divu(_overround, 10000); alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n))); b = ABDKMath.mul(ABDKMath.mul(initial_subsidy, n), alpha); for(uint i=0; i&amp;lt;_numOutcomes; i++) { q.push(initial_subsidy); } init = true; total_shares = ABDKMath.</description></item><item><title>Withdraw</title><link>https://docs.just.win/docs/developer-guide/withdraw/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://docs.just.win/docs/developer-guide/withdraw/</guid><description>function withdraw() public onlyAfterInit() onlyOwner() { require(CT.payoutDenominator(condition) != 0, 'Market needs to be resolved'); uint[] memory dust = new uint256[](numOutcomes); uint p = 0; for (uint i=0; i&amp;lt;numOutcomes; i++) { dust[i] = 1&amp;lt;&amp;lt;i; /* console.log('Index', 1&amp;lt;&amp;lt;i); */ p = CT.getPositionId(IERC20(token), CT.getCollectionId( bytes32(0), condition, 1&amp;lt;&amp;lt;i) ); } CT.redeemPositions(IERC20(token), bytes32(0), condition, dust); } This function can only be called by the user that deployed the contract and after the outcome of the prediction market has been reported.</description></item><item><title>Price</title><link>https://docs.just.win/docs/developer-guide/price/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://docs.just.win/docs/developer-guide/price/</guid><description>function price( uint256 _outcome, int128 _amount ) public view returns (int128) { return cost_after_buy(_outcome, _amount) - current_cost; } This function takes the same parameters as buy().
+  Mainnet: 0xC59b0e4De5F1248C1140964E0fF287B192407E0C
+  xDai: 0xCeAfDD6bc0bEF976fdCd1112955828E00543c0Ce
+  Rinkeby: 0x36bede640D19981A82090519bC1626249984c908</description>
+    </item>
+    
+    <item>
+      <title>Buy</title>
+      <link>https://docs.just.win/docs/developer-guide/buy/</link>
+      <pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/buy/</guid>
+      <description>function buy( uint256 _outcome, int128 _amount ) public onlyAfterInit() returns (int128 _price){ int128 sum_total; require(_outcome &amp;gt; 0); require(CT.payoutDenominator(condition) == 0, &#39;Market already resolved&#39;); for(uint j=0; j&amp;lt;numOutcomes; j++) { if((_outcome &amp;amp; (1&amp;lt;&amp;lt;j)) != 0) { q[j] = ABDKMath.add(q[j], _amount); total_shares = ABDKMath.add(total_shares, _amount); } } b = ABDKMath.mul(total_shares, alpha); for(uint i=0; i&amp;lt; numOutcomes; i++) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp( ABDKMath.div(q[i], b) )); } int128 new_cost = ABDKMath.mul(b,ABDKMath.ln(sum_total)); _price = ABDKMath.sub(new_cost,current_cost); current_cost = new_cost; uint token_cost = getTokenWei(token, _price); uint n_outcome_tokens = getTokenWei(token, _amount); uint pos = CT.</description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>https://docs.just.win/docs/developer-guide/setup/</link>
+      <pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/setup/</guid>
+      <description>function setup( address _oracle, bytes32 _questionId, uint _numOutcomes, uint _subsidy, uint _overround ) public onlyOwner() { require(init == false,&#39;Already init&#39;); require(_overround &amp;gt; 0,&#39;Cannot have 0 overround&#39;); CT.prepareCondition(_oracle, _questionId, _numOutcomes); condition = CT.getConditionId(_oracle, _questionId, _numOutcomes); IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy); numOutcomes = _numOutcomes; int128 n = ABDKMath.fromUInt(_numOutcomes); int128 initial_subsidy = getTokenEth(token, _subsidy); int128 overround = ABDKMath.divu(_overround, 10000); //TODO: if the overround is too low, then the exp overflows alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n))); b = ABDKMath.</description>
+    </item>
+    
+    <item>
+      <title>Withdraw</title>
+      <link>https://docs.just.win/docs/developer-guide/withdraw/</link>
+      <pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/withdraw/</guid>
+      <description>function withdraw() public onlyAfterInit() onlyOwner() { require(CT.payoutDenominator(condition) != 0, &#39;Market needs to be resolved&#39;); uint[] memory dust = new uint256[](numOutcomes); uint p = 0; for (uint i=0; i&amp;lt;numOutcomes; i++) { dust[i] = 1&amp;lt;&amp;lt;i; /* console.log(&#39;Index&#39;, 1&amp;lt;&amp;lt;i); */ p = CT.getPositionId(IERC20(token), CT.getCollectionId( bytes32(0), condition, 1&amp;lt;&amp;lt;i) ); } CT.redeemPositions(IERC20(token), bytes32(0), condition, dust); } This function can only be called by the user that deployed the contract and after the outcome of the prediction market has been reported.</description>
+    </item>
+    
+    <item>
+      <title>Price</title>
+      <link>https://docs.just.win/docs/developer-guide/price/</link>
+      <pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/price/</guid>
+      <description>function price( uint256 _outcome, int128 _amount ) public view returns (int128) { return cost_after_buy(_outcome, _amount) - current_cost; } This function takes the same parameters as buy().
 It will tell you the price to buy that number of outcome tokens and is denominated in the base currency.
-This is also returned as a fixed point integer and so will need to be converted into a human readable value by a front end.</description></item><item><title>Cost</title><link>https://docs.just.win/docs/developer-guide/cost/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://docs.just.win/docs/developer-guide/cost/</guid><description>function cost() public view onlyAfterInit() returns (int128) { int128 sum_total; for(uint i=0; i&amp;lt; numOutcomes; i++) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp(ABDKMath.div(q[i], b))); } return ABDKMath.mul(b, ABDKMath.ln(sum_total)); } This function returns the total trade volume of the market maker. This can be viewed as the total amount of money within the market maker. Note that it does not include the initial funding liquidity. Every time there is a trade, this number increases.</description></item></channel></rss>
+This is also returned as a fixed point integer and so will need to be converted into a human readable value by a front end.</description>
+    </item>
+    
+    <item>
+      <title>Cost</title>
+      <link>https://docs.just.win/docs/developer-guide/cost/</link>
+      <pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/developer-guide/cost/</guid>
+      <description>function cost() public view onlyAfterInit() returns (int128) { int128 sum_total; for(uint i=0; i&amp;lt; numOutcomes; i++) { sum_total = ABDKMath.add(sum_total, ABDKMath.exp(ABDKMath.div(q[i], b))); } return ABDKMath.mul(b, ABDKMath.ln(sum_total)); } This function returns the total trade volume of the market maker. This can be viewed as the total amount of money within the market maker. Note that it does not include the initial funding liquidity. Every time there is a trade, this number increases.</description>
+    </item>
+    
+  </channel>
+</rss>

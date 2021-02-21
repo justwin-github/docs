@@ -1,17 +1,18 @@
 ---
 title: "Price"
 description: ""
-lead: ""
+lead: "This function tells you the price to buy a certain number of tokens on a particular outcome."
 date: 2020-11-12T15:22:20+01:00
 lastmod: 2020-11-12T15:22:20+01:00
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "Developer Guide"
 weight: 38
 toc: true
 ---
+
 
 ```
 function price(

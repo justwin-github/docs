@@ -1,7 +1,62 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Title on</title><link>https://docs.just.win/docs/overview/</link><description>Recent content in Title on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://docs.just.win/docs/overview/index.xml" rel="self" type="application/rss+xml"/><item><title>Prediction Markets</title><link>https://docs.just.win/docs/overview/prediction-markets/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://docs.just.win/docs/overview/prediction-markets/</guid><description>💡 Sir Francis Galton was one of the first to write about the Wisdom of crowds when he found that the the average estimate of villagers as to the weight of an ox was close to the true weight. Prediction markets have been defined as:
-Sometimes called information markets, idea futures, event derivatives, decision markets, or virtual stock markets, prediction markets are exchange-traded markets where individuals trade the outcome of a future event in the form of event contracts.</description></item><item><title>Automated Market Makers</title><link>https://docs.just.win/docs/overview/automated_market_makers/</link><pubDate>Tue, 06 Oct 2020 08:48:57 +0000</pubDate><guid>https://docs.just.win/docs/overview/automated_market_makers/</guid><description>One of the important trends of 2020 was the rise of automated market makers. These automated market makers have been successful in functioning as decentralised exchanges and have attracted billions of dollars in trading volume.
-The appeal of these automated market makers is that they are computationally more simple than decentralised orderbook exchanges (such as Etherdelta) and thus allow for more gas efficient trading. Importantly, they are permissionless, allowing anyone to list asset pairs or trade.</description></item><item><title>Conditional Token Framework</title><link>https://docs.just.win/docs/overview/conditional_token/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://docs.just.win/docs/overview/conditional_token/</guid><description>The conditional tokens framework is a set of audited contracts published by gnosis which can allow for the creation of prediction markets. These contracts have their own extensive documentation. In essence, a user is able to create a condition. This condition represents a particular question and has a number of parameters. These parameters are set using the setup() function and explained below:
-Oracle. This is an address and represents how the outcome of the question will be determined.</description></item><item><title>Oracles</title><link>https://docs.just.win/docs/overview/oracles/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://docs.just.win/docs/overview/oracles/</guid><description>Within this page, we will describe different approaches to solve the oracle problem. If you want to know how to implement these within the prediction markets, please see the development page.
-The oracle problem has been well documented within blockchain technology. Blockchain networks are designed in such a way as to be deterministic. This makes it easy to access data that is stored on-chain (such as checking the balance of a public address) but impossible to access off-chain data (such as the weather in California).</description></item><item><title>LSMR &amp; LS-LSMR</title><link>https://docs.just.win/docs/overview/lsmr/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>https://docs.just.win/docs/overview/lsmr/</guid><description>LMSR The Logarithmic Market Scoring Rules (LMSR) market maker has a rich academic history and was designed specifically with prediction markets in mind.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Title on </title>
+    <link>https://docs.just.win/docs/overview/</link>
+    <description>Recent content in Title on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://docs.just.win/docs/overview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prediction Markets</title>
+      <link>https://docs.just.win/docs/overview/prediction-markets/</link>
+      <pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate>
+      
+      <guid>https://docs.just.win/docs/overview/prediction-markets/</guid>
+      <description>💡 Sir Francis Galton was one of the first to write about the Wisdom of crowds when he found that the the average estimate of villagers as to the weight of an ox was close to the true weight.   Prediction markets have been defined as:
+ Sometimes called information markets, idea futures, event derivatives, decision markets, or virtual stock markets, prediction markets are exchange-traded markets where individuals trade the outcome of a future event in the form of event contracts.</description>
+    </item>
+    
+    <item>
+      <title>Automated Market Makers</title>
+      <link>https://docs.just.win/docs/overview/automated_market_makers/</link>
+      <pubDate>Tue, 06 Oct 2020 08:48:57 +0000</pubDate>
+      
+      <guid>https://docs.just.win/docs/overview/automated_market_makers/</guid>
+      <description>One of the important trends of 2020 was the rise of automated market makers. These automated market makers have been successful in functioning as decentralised exchanges and have attracted billions of dollars in trading volume.
+The appeal of these automated market makers is that they are computationally more simple than decentralised orderbook exchanges (such as Etherdelta) and thus allow for more gas efficient trading. Importantly, they are permissionless, allowing anyone to list asset pairs or trade.</description>
+    </item>
+    
+    <item>
+      <title>Conditional Token Framework</title>
+      <link>https://docs.just.win/docs/overview/conditional_token/</link>
+      <pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate>
+      
+      <guid>https://docs.just.win/docs/overview/conditional_token/</guid>
+      <description>The conditional tokens framework is a set of audited contracts published by gnosis which can allow for the creation of prediction markets. These contracts have their own extensive documentation. In essence, a user is able to create a condition. This condition represents a particular question and has a number of parameters. These parameters are set using the setup() function and explained below:
+  Oracle. This is an address and represents how the outcome of the question will be determined.</description>
+    </item>
+    
+    <item>
+      <title>Oracles</title>
+      <link>https://docs.just.win/docs/overview/oracles/</link>
+      <pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate>
+      
+      <guid>https://docs.just.win/docs/overview/oracles/</guid>
+      <description>Within this page, we will describe different approaches to solve the oracle problem. If you want to know how to implement these within the prediction markets, please see the development page.
+The oracle problem has been well documented within blockchain technology. Blockchain networks are designed in such a way as to be deterministic. This makes it easy to access data that is stored on-chain (such as checking the balance of a public address) but impossible to access off-chain data (such as the weather in California).</description>
+    </item>
+    
+    <item>
+      <title>LSMR &amp; LS-LSMR</title>
+      <link>https://docs.just.win/docs/overview/lsmr/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>https://docs.just.win/docs/overview/lsmr/</guid>
+      <description>LMSR The Logarithmic Market Scoring Rules (LMSR) market maker has a rich academic history and was designed specifically with prediction markets in mind.
 According to the Gnosis Developer Portal the advantages of the LSMR compared to the CPMM are:
-LMSR has more recognition in academic work, and its properties are much more studied than CPMM. It is easier to find papers on the properties of LMSR, or to leverage existing research on this market maker.</description></item></channel></rss>
+  LMSR has more recognition in academic work, and its properties are much more studied than CPMM. It is easier to find papers on the properties of LMSR, or to leverage existing research on this market maker.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,12 +1,12 @@
 ---
 title: "Withdraw"
 description: ""
-lead: ""
+lead: "This function is used by the contract owner to receive all the liquidity after the prediction market has been resolved."
 date: 2020-11-12T15:22:20+01:00
 lastmod: 2020-11-12T15:22:20+01:00
 draft: false
 images: []
-menu: 
+menu:
   docs:
     parent: "Developer Guide"
 weight: 35

@@ -1,17 +1,162 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=https://docs.just.win/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://docs.just.win/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><link rel=stylesheet href=https://docs.just.win/main.660bb5b9ab0e383077d84cf52a81bd6555dd48d7e0ea34cd2a8d78aa06b4f119f8aa87d73e84d01e5bda7bc9321a0876fded0b4302ac9e6fed101d952269a98f.css integrity="sha512-Zgu1uasOODB32Ez1KoG9ZVXdSNfg6jTNKo14qga08Rn4qofXPoTQHlvae8kyGgh2/e0LQwKsnm/tEB2VImmpjw==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Setup - AMMs For Prediction Markets</title><meta name=description content="Description."><link rel=canonical href=https://docs.just.win/docs/developer-guide/setup/><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://docs.just.win/doks.png"><meta name=twitter:title content="Setup"><meta name=twitter:description content="function setup( address _oracle, uint _numOutcomes, uint _subsidy, uint _overround ) public onlyOwner() { require(init == false,'Already init'); require(_overround > 0,'Cannot have 0 overround'); CT.prepareCondition(_oracle, bytes32(uint256(address(this))), _numOutcomes); condition = CT.getConditionId(_oracle, bytes32(uint256(address(this))), _numOutcomes); console.logBytes32(bytes32(uint256(address(this)))); IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy); numOutcomes = _numOutcomes; int128 n = ABDKMath.fromUInt(_numOutcomes); int128 initial_subsidy = getTokenEth(token, _subsidy); int128 overround = ABDKMath.divu(_overround, 10000); alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n))); b = ABDKMath.mul(ABDKMath.mul(initial_subsidy, n), alpha); for(uint i=0; i<_numOutcomes; i++) { q.push(initial_subsidy); } init = true; total_shares = ABDKMath."><meta name=twitter:site content="@"><meta name=twitter:creator content="@"><meta property="og:title" content="Setup"><meta property="og:description" content="function setup( address _oracle, uint _numOutcomes, uint _subsidy, uint _overround ) public onlyOwner() { require(init == false,'Already init'); require(_overround > 0,'Cannot have 0 overround'); CT.prepareCondition(_oracle, bytes32(uint256(address(this))), _numOutcomes); condition = CT.getConditionId(_oracle, bytes32(uint256(address(this))), _numOutcomes); console.logBytes32(bytes32(uint256(address(this)))); IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy); numOutcomes = _numOutcomes; int128 n = ABDKMath.fromUInt(_numOutcomes); int128 initial_subsidy = getTokenEth(token, _subsidy); int128 overround = ABDKMath.divu(_overround, 10000); alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n))); b = ABDKMath.mul(ABDKMath.mul(initial_subsidy, n), alpha); for(uint i=0; i<_numOutcomes; i++) { q.push(initial_subsidy); } init = true; total_shares = ABDKMath."><meta property="og:type" content="article"><meta property="og:url" content="https://docs.just.win/docs/developer-guide/setup/"><meta property="og:image" content="https://docs.just.win/doks.png"><meta property="article:published_time" content="2020-11-12T15:22:20+01:00"><meta property="article:modified_time" content="2020-11-12T15:22:20+01:00"><meta property="og:site_name" content="AMMs For Prediction Markets"><meta property="article:publisher" content="https://www.facebook.com/"><meta property="article:author" content="https://www.facebook.com/"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/docs.just.win\/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https:\/\/docs.just.win\/docs\/"},{"@type":"ListItem","position":3,"name":"Developer Guide","item":"https:\/\/docs.just.win\/docs\/developer-guide\/"},{"@type":"ListItem","position":4,"name":"Setup","item":"https:\/\/docs.just.win\/docs\/developer-guide\/setup\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=https://docs.just.win/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://docs.just.win/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://docs.just.win/favicon-16x16.png><link rel=manifest href=https://docs.just.win/site.webmanifest></head><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" type=checkbox id=menu-btn>
-<label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 mr-auto" href=https://docs.just.win/>AMMs For Prediction Markets</a>
-<button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
-<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button><ul class="navbar-nav social-nav order-3 order-md-5"><li class=nav-item><a class=nav-link href=https://github.com/justwin-github><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><span class="ml-2 sr-only">GitHub</span></a></li></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav mr-auto order-5 order-md-2"><li class="nav-item active"><a class=nav-link href=https://docs.just.win/docs/>Docs</a></li></ul><div class="break order-6 d-md-none"></div><form class="navbar-form flex-grow-1 order-7 order-md-3"><input id=userinput class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off><div id=suggestions class="shadow bg-white rounded"></div></form></div></div></header><div class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav class=docs-links aria-label="Main navigation"><h3>Overview</h3><ul class=list-unstyled><li><a class=docs-link href=https://docs.just.win/docs/overview/prediction-markets/>Prediction Markets</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/automated_market_makers/>Automated Market Makers</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/conditional_token/>Conditional Token Framework</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/oracles/>Oracles</a></li><li><a class=docs-link href=https://docs.just.win/docs/overview/lsmr/>LSMR & LS-LSMR</a></li></ul><h3>Tutorial</h3><ul class=list-unstyled><li><a class=docs-link href=https://docs.just.win/docs/tutorial/getting-started/>Getting Started</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/import-into-remix/>Import into Remix</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/deploying-contracts/>Deploying Contracts</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/interacting-with-contracts/>Interacting with contracts</a></li><li><a class=docs-link href=https://docs.just.win/docs/tutorial/deploying-to-testnet/>Deploying to Testnet</a></li></ul><h3>Developer Guide</h3><ul class=list-unstyled><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/introduction/>Introduction</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/lslmsr/>LsLMSR</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/constructor/>Constructor</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/buy/>Buy</a></li><li><a class="docs-link active" href=https://docs.just.win/docs/developer-guide/setup/>Setup</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/withdraw/>Withdraw</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/price/>Price</a></li><li><a class=docs-link href=https://docs.just.win/docs/developer-guide/cost/>Cost</a></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=page-links><h3>On this page</h3><nav id=TableOfContents></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>Setup</h1><p class=lead></p><pre><code>function setup(
+<!doctype html>
+<html lang="en-US">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preload" as="font" href="https://docs.just.win/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="https://docs.just.win/fonts/vendor/jost/jost-v4-latin-700.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://docs.just.win/main.b89533ff92d426f8efc380489eea2cab4eb2a0640f7f2e60348cffd715db81640893e0edb8dedc16542dc4feb72884c97144bc680a1ef07b49b9dddf0093e6f3.css" integrity="sha512-uJUz/5LUJvjvw4BInuosq06yoGQPfy5gNIz/1xXbgWQIk&#43;DtuN7cFlQtxP63KITJcUS8aAoe8HtJud3fAJPm8w==" crossorigin="anonymous">
+<noscript><style>img.lazyload { display: none; }</style></noscript>
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <title>Setup - AMMs For Prediction Markets</title>
+<meta name="description" content="Description.">
+<link rel="canonical" href="https://docs.just.win/docs/developer-guide/setup/">
+<meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://docs.just.win/doks.png">
+    <meta name="twitter:title" content="Setup">
+<meta name="twitter:description" content="function setup( address _oracle, bytes32 _questionId, uint _numOutcomes, uint _subsidy, uint _overround ) public onlyOwner() { require(init == false,&#39;Already init&#39;); require(_overround &gt; 0,&#39;Cannot have 0 overround&#39;); CT.prepareCondition(_oracle, _questionId, _numOutcomes); condition = CT.getConditionId(_oracle, _questionId, _numOutcomes); IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy); numOutcomes = _numOutcomes; int128 n = ABDKMath.fromUInt(_numOutcomes); int128 initial_subsidy = getTokenEth(token, _subsidy); int128 overround = ABDKMath.divu(_overround, 10000); //TODO: if the overround is too low, then the exp overflows alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n))); b = ABDKMath.">
+
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+
+<meta property="og:title" content="Setup">
+<meta property="og:description" content="function setup( address _oracle, bytes32 _questionId, uint _numOutcomes, uint _subsidy, uint _overround ) public onlyOwner() { require(init == false,&#39;Already init&#39;); require(_overround &gt; 0,&#39;Cannot have 0 overround&#39;); CT.prepareCondition(_oracle, _questionId, _numOutcomes); condition = CT.getConditionId(_oracle, _questionId, _numOutcomes); IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy); numOutcomes = _numOutcomes; int128 n = ABDKMath.fromUInt(_numOutcomes); int128 initial_subsidy = getTokenEth(token, _subsidy); int128 overround = ABDKMath.divu(_overround, 10000); //TODO: if the overround is too low, then the exp overflows alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n))); b = ABDKMath.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://docs.just.win/docs/developer-guide/setup/">
+
+  <meta property="og:image" content="https://docs.just.win/doks.png"/>
+    <meta property="article:published_time" content="2020-11-12T15:22:20+01:00">
+  <meta property="article:modified_time" content="2020-11-12T15:22:20+01:00">
+  <meta property="og:site_name" content="AMMs For Prediction Markets">
+
+<meta property="article:publisher" content="https://www.facebook.com/">
+<meta property="article:author" content="https://www.facebook.com/">
+<meta property="og:locale" content="en_US">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position":  1 ,
+        "name": "Home",
+        "item": "https:\/\/docs.just.win\/"
+    },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "name": "Docs",
+        "item": "https:\/\/docs.just.win\/docs\/"
+    },{
+        "@type": "ListItem",
+        "position":  3 ,
+        "name": "Developer Guide",
+        "item": "https:\/\/docs.just.win\/docs\/developer-guide\/"
+    },{
+        "@type": "ListItem",
+        "position":  4 ,
+        "name": "Setup",
+        "item": "https:\/\/docs.just.win\/docs\/developer-guide\/setup\/"
+    }]
+}
+</script>
+
+  <meta name="theme-color" content="#fff">
+<link rel="apple-touch-icon" sizes="180x180" href="https://docs.just.win/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://docs.just.win/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://docs.just.win/favicon-16x16.png">
+<link rel="manifest" href="https://docs.just.win/site.webmanifest">
+  
+</head>
+  <body class="docs single">
+    <div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+  <div class="container">
+    <input class="menu-btn order-0" type="checkbox" id="menu-btn">
+    <label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+    <a class="navbar-brand order-1 order-md-0 mr-auto" href="https://docs.just.win/">AMMs For Prediction Markets</a>
+    <button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+      <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+    </button>
+    <ul class="navbar-nav social-nav order-3 order-md-5">
+      <li class="nav-item">
+          <a class="nav-link" href="https://github.com/justwin-github"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ml-2 sr-only">GitHub</span></a>
+        </li>
+      </ul>
+    <div class="collapse navbar-collapse order-4 order-md-1">
+      <ul class="navbar-nav main-nav mr-auto order-5 order-md-2"><li class="nav-item active">
+            <a class="nav-link" href="https://docs.just.win/docs/">Docs</a>
+          </li>
+        </ul>
+      <div class="break order-6 d-md-none"></div>
+      <form class="navbar-form flex-grow-1 order-7 order-md-3">
+        <input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+        <div id="suggestions" class="shadow bg-white rounded"></div>
+      </form>
+    </div>
+  </div>
+</header>
+    <div class="wrap container" role="document">
+      <div class="content">
+        
+	<div class="row flex-xl-nowrap">
+		<div class="col-lg-5 col-xl-4 docs-sidebar">
+			<nav class="docs-links" aria-label="Main navigation">
+				<h3>Overview</h3>
+  <ul class="list-unstyled">
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/prediction-markets/">Prediction Markets</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/automated_market_makers/">Automated Market Makers</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/conditional_token/">Conditional Token Framework</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/oracles/">Oracles</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/overview/lsmr/">LSMR &amp; LS-LSMR</a></li>
+    </ul>
+  <h3>Tutorial</h3>
+  <ul class="list-unstyled">
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/getting-started/">Getting Started</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/import-into-remix/">Import into Remix</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/deploying-contracts/">Deploying Contracts</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/interacting-with-contracts/">Interacting with contracts</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/tutorial/deploying-to-testnet/">Deploying to Testnet </a></li>
+    </ul>
+  <h3>Developer Guide</h3>
+  <ul class="list-unstyled">
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/introduction/">Introduction</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/lslmsr/">LsLMSR</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/constructor/">Constructor</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/buy/">Buy</a></li>
+    <li><a class="docs-link active" href="https://docs.just.win/docs/developer-guide/setup/">Setup</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/withdraw/">Withdraw</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/price/">Price</a></li>
+    <li><a class="docs-link" href="https://docs.just.win/docs/developer-guide/cost/">Cost</a></li>
+    </ul>
+  
+			</nav>        
+		</div>
+		<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+			<div class="page-links">
+    <h3>On this page</h3>
+    <nav id="TableOfContents"></nav>
+  </div>
+
+		</nav>
+		<main class="docs-content col-lg-11 col-xl-9">
+		<h1>Setup</h1>
+			<p class="lead">The function used by the contract deployer to set up AMM parameters. This must be called before users can interact with the contract.</p>
+			<pre><code>function setup(
     address _oracle,
+    bytes32 _questionId,
     uint _numOutcomes,
     uint _subsidy,
     uint _overround
   ) public onlyOwner() {
     require(init == false,'Already init');
     require(_overround &gt; 0,'Cannot have 0 overround');
-    CT.prepareCondition(_oracle, bytes32(uint256(address(this))), _numOutcomes);
-    condition = CT.getConditionId(_oracle, bytes32(uint256(address(this))), _numOutcomes);
-    console.logBytes32(bytes32(uint256(address(this))));
+    CT.prepareCondition(_oracle, _questionId, _numOutcomes);
+    condition = CT.getConditionId(_oracle, _questionId, _numOutcomes);
 
     IERC20(token).safeTransferFrom(msg.sender, address(this), _subsidy);
 
@@ -19,7 +164,7 @@
     int128 n = ABDKMath.fromUInt(_numOutcomes);
     int128 initial_subsidy = getTokenEth(token, _subsidy);
 
-    int128 overround = ABDKMath.divu(_overround, 10000);
+    int128 overround = ABDKMath.divu(_overround, 10000); //TODO: if the overround is too low, then the exp overflows
     alpha = ABDKMath.div(overround, ABDKMath.mul(n,ABDKMath.ln(n)));
     b = ABDKMath.mul(ABDKMath.mul(initial_subsidy, n), alpha);
 
@@ -32,4 +177,1087 @@
     total_shares = ABDKMath.mul(initial_subsidy, n);
     current_cost = cost();
   }
-</code></pre><p>This function allows you to customise the parameters used by the market maker in employing the Ls LMSR algorithm.</p><p>This function can only be called by the contract deployer and it is necessary to be called before it is possible to trade with the market maker.</p><p><code>_oracle</code>: this is the address that is required to report the outcome of the prediction market at resolution. It can either be an externally owned account or a reference to another smart contract. This does not need to be the same as the person that deployed the contract. There are a variety of approaches that can be used for choosing the oracle and we discuss these further below.</p><p><code>_numOutcomes</code>: an integer representing the number of discrete outcomes available for the market.</p><p><code>_subsidy</code>: this represents the total amount of tokens that will be used to fund the market maker and can be viewed as the initial liquidity. The properties of the LsLMSR are such that choosing large numbers for _subsidy (ie where you fund the market maker with large amounts of capital) provides a tighter spread for traders, however results in higher potential losses (bounded loss is proportional to initial capital)</p><p><code>_overround</code>: this represents the amount of profit that can be made by the market maker or the &lsquo;houses edge&rsquo;. It is expressed in &lsquo;bips&rsquo; where a value of 100 is equivalent to 1% profit. For reference, traditional book makers use an overround of between 5 and 10%. It is worth noting here that the calculations used by LsLMSR involve exponential arithmetic. Where the overround value is small, it is possible for the calculation to overflow (this is a limitation of the ethereum virtual machine). We would therefore recommend the minimum overround to be set at 3% but the actual minimum will be dependent on the number of outcomes available.</p><p>In order for the oracle to report the outcome of the prediction market, it must call the function <code>reportPayouts()</code> found on the conditional tokens contract. This can either be done directly where the oracle is an externally owned account, or by a separate smart contract.</p><p>It is possible to write additional smart contracts that can interact with chainlink nodes or kleros arbitration and parse this information in a manner that can be reported to the conditional tokens contract.</p><p>Through the clever use of smart contracts, any information that can be brought on-chain can be used to create a prediction market. </p><div class="docs-navigation d-flex justify-content-between"><a href=https://docs.just.win/docs/developer-guide/buy/><div class="card my-1"><div class="card-body py-2">&larr; Buy</div></div></a><a class=ml-auto href=https://docs.just.win/docs/developer-guide/withdraw/><div class="card my-1"><div class="card-body py-2">Withdraw &rarr;</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by the Just Win team. Funded by Gnosis.</li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-right"><ul class=list-inline></ul></div></div></div></footer><script src=https://docs.just.win/main.f6b484f556ad1f3bcf6061082139a2f21fa759f13930c39a25fe4a9f78f35e64122c2d86dffd56e67b292dabbda4095d8077194f196e0e348441c106a9f3d40e.js integrity="sha512-9rSE9VatHzvPYGEIITmi8h+nWfE5MMOaJf5Kn3jzXmQSLC2G3/1W5nspLau9pAldgHcZTxluDjSEQcEGqfPUDg==" crossorigin=anonymous defer></script><script src=https://docs.just.win/index.min.7d35d666db49980973fd032dde1d0320f6ba9198e5e47c02eecff7f5aced52af13ef20a5ffd2553df6736c566e520941f5f03ffa0452a07ab3b3b0cbeb11f5fb.js integrity="sha512-fTXWZttJmAlz/QMt3h0DIPa6kZjl5HwC7s/39aztUq8T7yCl/9JVPfZzbFZuUglB9fA/+gRSoHqzs7DL6xH1+w==" crossorigin=anonymous defer></script></body></html>
+</code></pre><p>This function allows you to customise the parameters used by the market maker in employing the Ls LMSR algorithm.</p>
+<p>This function can only be called by the contract deployer and it is necessary to be called before it is possible to trade with the market maker.</p>
+<p><code>_oracle</code>: this is the address that is required to report the outcome of the prediction market at resolution. It can either be an externally owned account or a reference to another smart contract. This does not need to be the same as the person that deployed the contract. There are a variety of approaches that can be used for choosing the oracle and we discuss these further below.</p>
+<p><code>_questionId</code>: This is a unique bytes32 representation of the question ID. This ID will be used by the oracle in order to report the outcome (and can therefore be used to allow a single oracle to report on multiple events). The question ID could be an ipfs hash to a file storing metadata for the prediction market (such as a description of each of the outcomes).</p>
+<p><code>_numOutcomes</code>: an integer representing the number of discrete outcomes available for the market.</p>
+<p><code>_subsidy</code>: this represents the total amount of tokens that will be used to fund the market maker and can be viewed as the initial liquidity. The properties of the LsLMSR are such that choosing large numbers for _subsidy (ie where you fund the market maker with large amounts of capital) provides a tighter spread for traders, however results in higher potential losses (bounded loss is proportional to initial capital)</p>
+<p><code>_overround</code>: this represents the amount of profit that can be made by the market maker or the &lsquo;houses edge&rsquo;. It is expressed in &lsquo;bips&rsquo; where a value of 100 is equivalent to 1% profit. For reference, traditional book makers use an overround of between 5 and 10%. It is worth noting here that the calculations used by LsLMSR involve exponential arithmetic. Where the overround value is small, it is possible for the calculation to overflow (this is a limitation of the ethereum virtual machine). The minimum overround is dependent on the number of outcomes for the market and is displayed in the table at the bottom of this page.</p>
+<p>In order for the oracle to report the outcome of the prediction market, it must call the function <code>reportPayouts()</code> found on the conditional tokens contract. This can either be done directly where the oracle is an externally owned account, or by a separate smart contract.</p>
+<p>It is possible to write additional smart contracts that can interact with chainlink nodes or kleros arbitration and parse this information in a manner that can be reported to the conditional tokens contract.</p>
+<p>Through the clever use of smart contracts, any information that can be brought on-chain can be used to create a prediction market. </p>
+<h1 id="minimum-overround">Minimum overround</h1>
+<table>
+<thead>
+<tr>
+<th>Number of outcomes</th>
+<th>Minimum overround (bps)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>174</td>
+</tr>
+<tr>
+<td>3</td>
+<td>275</td>
+</tr>
+<tr>
+<td>4</td>
+<td>347</td>
+</tr>
+<tr>
+<td>5</td>
+<td>403</td>
+</tr>
+<tr>
+<td>6</td>
+<td>448</td>
+</tr>
+<tr>
+<td>7</td>
+<td>487</td>
+</tr>
+<tr>
+<td>8</td>
+<td>520</td>
+</tr>
+<tr>
+<td>9</td>
+<td>550</td>
+</tr>
+<tr>
+<td>10</td>
+<td>576</td>
+</tr>
+<tr>
+<td>11</td>
+<td>600</td>
+</tr>
+<tr>
+<td>12</td>
+<td>622</td>
+</tr>
+<tr>
+<td>13</td>
+<td>642</td>
+</tr>
+<tr>
+<td>14</td>
+<td>660</td>
+</tr>
+<tr>
+<td>15</td>
+<td>678</td>
+</tr>
+<tr>
+<td>16</td>
+<td>694</td>
+</tr>
+<tr>
+<td>17</td>
+<td>709</td>
+</tr>
+<tr>
+<td>18</td>
+<td>723</td>
+</tr>
+<tr>
+<td>19</td>
+<td>737</td>
+</tr>
+<tr>
+<td>20</td>
+<td>749</td>
+</tr>
+<tr>
+<td>21</td>
+<td>762</td>
+</tr>
+<tr>
+<td>22</td>
+<td>773</td>
+</tr>
+<tr>
+<td>23</td>
+<td>784</td>
+</tr>
+<tr>
+<td>24</td>
+<td>795</td>
+</tr>
+<tr>
+<td>25</td>
+<td>805</td>
+</tr>
+<tr>
+<td>26</td>
+<td>815</td>
+</tr>
+<tr>
+<td>27</td>
+<td>824</td>
+</tr>
+<tr>
+<td>28</td>
+<td>834</td>
+</tr>
+<tr>
+<td>29</td>
+<td>842</td>
+</tr>
+<tr>
+<td>30</td>
+<td>851</td>
+</tr>
+<tr>
+<td>31</td>
+<td>859</td>
+</tr>
+<tr>
+<td>32</td>
+<td>867</td>
+</tr>
+<tr>
+<td>33</td>
+<td>875</td>
+</tr>
+<tr>
+<td>34</td>
+<td>882</td>
+</tr>
+<tr>
+<td>35</td>
+<td>889</td>
+</tr>
+<tr>
+<td>36</td>
+<td>896</td>
+</tr>
+<tr>
+<td>37</td>
+<td>903</td>
+</tr>
+<tr>
+<td>38</td>
+<td>910</td>
+</tr>
+<tr>
+<td>39</td>
+<td>916</td>
+</tr>
+<tr>
+<td>40</td>
+<td>923</td>
+</tr>
+<tr>
+<td>41</td>
+<td>929</td>
+</tr>
+<tr>
+<td>42</td>
+<td>935</td>
+</tr>
+<tr>
+<td>43</td>
+<td>941</td>
+</tr>
+<tr>
+<td>44</td>
+<td>947</td>
+</tr>
+<tr>
+<td>45</td>
+<td>952</td>
+</tr>
+<tr>
+<td>46</td>
+<td>958</td>
+</tr>
+<tr>
+<td>47</td>
+<td>963</td>
+</tr>
+<tr>
+<td>48</td>
+<td>968</td>
+</tr>
+<tr>
+<td>49</td>
+<td>973</td>
+</tr>
+<tr>
+<td>50</td>
+<td>979</td>
+</tr>
+<tr>
+<td>51</td>
+<td>983</td>
+</tr>
+<tr>
+<td>52</td>
+<td>988</td>
+</tr>
+<tr>
+<td>53</td>
+<td>993</td>
+</tr>
+<tr>
+<td>54</td>
+<td>998</td>
+</tr>
+<tr>
+<td>55</td>
+<td>1002</td>
+</tr>
+<tr>
+<td>56</td>
+<td>1007</td>
+</tr>
+<tr>
+<td>57</td>
+<td>1011</td>
+</tr>
+<tr>
+<td>58</td>
+<td>1016</td>
+</tr>
+<tr>
+<td>59</td>
+<td>1020</td>
+</tr>
+<tr>
+<td>60</td>
+<td>1024</td>
+</tr>
+<tr>
+<td>61</td>
+<td>1028</td>
+</tr>
+<tr>
+<td>62</td>
+<td>1032</td>
+</tr>
+<tr>
+<td>63</td>
+<td>1036</td>
+</tr>
+<tr>
+<td>64</td>
+<td>1040</td>
+</tr>
+<tr>
+<td>65</td>
+<td>1044</td>
+</tr>
+<tr>
+<td>66</td>
+<td>1048</td>
+</tr>
+<tr>
+<td>67</td>
+<td>1052</td>
+</tr>
+<tr>
+<td>68</td>
+<td>1055</td>
+</tr>
+<tr>
+<td>69</td>
+<td>1059</td>
+</tr>
+<tr>
+<td>70</td>
+<td>1063</td>
+</tr>
+<tr>
+<td>71</td>
+<td>1066</td>
+</tr>
+<tr>
+<td>72</td>
+<td>1070</td>
+</tr>
+<tr>
+<td>73</td>
+<td>1073</td>
+</tr>
+<tr>
+<td>74</td>
+<td>1077</td>
+</tr>
+<tr>
+<td>75</td>
+<td>1080</td>
+</tr>
+<tr>
+<td>76</td>
+<td>1083</td>
+</tr>
+<tr>
+<td>77</td>
+<td>1086</td>
+</tr>
+<tr>
+<td>78</td>
+<td>1090</td>
+</tr>
+<tr>
+<td>79</td>
+<td>1093</td>
+</tr>
+<tr>
+<td>80</td>
+<td>1096</td>
+</tr>
+<tr>
+<td>81</td>
+<td>1099</td>
+</tr>
+<tr>
+<td>82</td>
+<td>1102</td>
+</tr>
+<tr>
+<td>83</td>
+<td>1105</td>
+</tr>
+<tr>
+<td>84</td>
+<td>1108</td>
+</tr>
+<tr>
+<td>85</td>
+<td>1111</td>
+</tr>
+<tr>
+<td>86</td>
+<td>1114</td>
+</tr>
+<tr>
+<td>87</td>
+<td>1117</td>
+</tr>
+<tr>
+<td>88</td>
+<td>1120</td>
+</tr>
+<tr>
+<td>89</td>
+<td>1123</td>
+</tr>
+<tr>
+<td>90</td>
+<td>1125</td>
+</tr>
+<tr>
+<td>91</td>
+<td>1128</td>
+</tr>
+<tr>
+<td>92</td>
+<td>1131</td>
+</tr>
+<tr>
+<td>93</td>
+<td>1134</td>
+</tr>
+<tr>
+<td>94</td>
+<td>1136</td>
+</tr>
+<tr>
+<td>95</td>
+<td>1139</td>
+</tr>
+<tr>
+<td>96</td>
+<td>1142</td>
+</tr>
+<tr>
+<td>97</td>
+<td>1144</td>
+</tr>
+<tr>
+<td>98</td>
+<td>1147</td>
+</tr>
+<tr>
+<td>99</td>
+<td>1149</td>
+</tr>
+<tr>
+<td>100</td>
+<td>1152</td>
+</tr>
+<tr>
+<td>101</td>
+<td>1154</td>
+</tr>
+<tr>
+<td>102</td>
+<td>1157</td>
+</tr>
+<tr>
+<td>103</td>
+<td>1159</td>
+</tr>
+<tr>
+<td>104</td>
+<td>1162</td>
+</tr>
+<tr>
+<td>105</td>
+<td>1164</td>
+</tr>
+<tr>
+<td>106</td>
+<td>1166</td>
+</tr>
+<tr>
+<td>107</td>
+<td>1169</td>
+</tr>
+<tr>
+<td>108</td>
+<td>1171</td>
+</tr>
+<tr>
+<td>109</td>
+<td>1173</td>
+</tr>
+<tr>
+<td>110</td>
+<td>1176</td>
+</tr>
+<tr>
+<td>111</td>
+<td>1178</td>
+</tr>
+<tr>
+<td>112</td>
+<td>1180</td>
+</tr>
+<tr>
+<td>113</td>
+<td>1182</td>
+</tr>
+<tr>
+<td>114</td>
+<td>1185</td>
+</tr>
+<tr>
+<td>115</td>
+<td>1187</td>
+</tr>
+<tr>
+<td>116</td>
+<td>1189</td>
+</tr>
+<tr>
+<td>117</td>
+<td>1191</td>
+</tr>
+<tr>
+<td>118</td>
+<td>1193</td>
+</tr>
+<tr>
+<td>119</td>
+<td>1195</td>
+</tr>
+<tr>
+<td>120</td>
+<td>1197</td>
+</tr>
+<tr>
+<td>121</td>
+<td>1199</td>
+</tr>
+<tr>
+<td>122</td>
+<td>1202</td>
+</tr>
+<tr>
+<td>123</td>
+<td>1204</td>
+</tr>
+<tr>
+<td>124</td>
+<td>1206</td>
+</tr>
+<tr>
+<td>125</td>
+<td>1208</td>
+</tr>
+<tr>
+<td>126</td>
+<td>1210</td>
+</tr>
+<tr>
+<td>127</td>
+<td>1212</td>
+</tr>
+<tr>
+<td>128</td>
+<td>1214</td>
+</tr>
+<tr>
+<td>129</td>
+<td>1215</td>
+</tr>
+<tr>
+<td>130</td>
+<td>1217</td>
+</tr>
+<tr>
+<td>131</td>
+<td>1219</td>
+</tr>
+<tr>
+<td>132</td>
+<td>1221</td>
+</tr>
+<tr>
+<td>133</td>
+<td>1223</td>
+</tr>
+<tr>
+<td>134</td>
+<td>1225</td>
+</tr>
+<tr>
+<td>135</td>
+<td>1227</td>
+</tr>
+<tr>
+<td>136</td>
+<td>1229</td>
+</tr>
+<tr>
+<td>137</td>
+<td>1230</td>
+</tr>
+<tr>
+<td>138</td>
+<td>1232</td>
+</tr>
+<tr>
+<td>139</td>
+<td>1234</td>
+</tr>
+<tr>
+<td>140</td>
+<td>1236</td>
+</tr>
+<tr>
+<td>141</td>
+<td>1238</td>
+</tr>
+<tr>
+<td>142</td>
+<td>1239</td>
+</tr>
+<tr>
+<td>143</td>
+<td>1241</td>
+</tr>
+<tr>
+<td>144</td>
+<td>1243</td>
+</tr>
+<tr>
+<td>145</td>
+<td>1245</td>
+</tr>
+<tr>
+<td>146</td>
+<td>1246</td>
+</tr>
+<tr>
+<td>147</td>
+<td>1248</td>
+</tr>
+<tr>
+<td>148</td>
+<td>1250</td>
+</tr>
+<tr>
+<td>149</td>
+<td>1251</td>
+</tr>
+<tr>
+<td>150</td>
+<td>1253</td>
+</tr>
+<tr>
+<td>151</td>
+<td>1255</td>
+</tr>
+<tr>
+<td>152</td>
+<td>1256</td>
+</tr>
+<tr>
+<td>153</td>
+<td>1258</td>
+</tr>
+<tr>
+<td>154</td>
+<td>1260</td>
+</tr>
+<tr>
+<td>155</td>
+<td>1261</td>
+</tr>
+<tr>
+<td>156</td>
+<td>1263</td>
+</tr>
+<tr>
+<td>157</td>
+<td>1265</td>
+</tr>
+<tr>
+<td>158</td>
+<td>1266</td>
+</tr>
+<tr>
+<td>159</td>
+<td>1268</td>
+</tr>
+<tr>
+<td>160</td>
+<td>1269</td>
+</tr>
+<tr>
+<td>161</td>
+<td>1271</td>
+</tr>
+<tr>
+<td>162</td>
+<td>1272</td>
+</tr>
+<tr>
+<td>163</td>
+<td>1274</td>
+</tr>
+<tr>
+<td>164</td>
+<td>1275</td>
+</tr>
+<tr>
+<td>165</td>
+<td>1277</td>
+</tr>
+<tr>
+<td>166</td>
+<td>1278</td>
+</tr>
+<tr>
+<td>167</td>
+<td>1280</td>
+</tr>
+<tr>
+<td>168</td>
+<td>1281</td>
+</tr>
+<tr>
+<td>169</td>
+<td>1283</td>
+</tr>
+<tr>
+<td>170</td>
+<td>1284</td>
+</tr>
+<tr>
+<td>171</td>
+<td>1286</td>
+</tr>
+<tr>
+<td>172</td>
+<td>1287</td>
+</tr>
+<tr>
+<td>173</td>
+<td>1289</td>
+</tr>
+<tr>
+<td>174</td>
+<td>1290</td>
+</tr>
+<tr>
+<td>175</td>
+<td>1292</td>
+</tr>
+<tr>
+<td>176</td>
+<td>1293</td>
+</tr>
+<tr>
+<td>177</td>
+<td>1295</td>
+</tr>
+<tr>
+<td>178</td>
+<td>1296</td>
+</tr>
+<tr>
+<td>179</td>
+<td>1297</td>
+</tr>
+<tr>
+<td>180</td>
+<td>1299</td>
+</tr>
+<tr>
+<td>181</td>
+<td>1300</td>
+</tr>
+<tr>
+<td>182</td>
+<td>1302</td>
+</tr>
+<tr>
+<td>183</td>
+<td>1303</td>
+</tr>
+<tr>
+<td>184</td>
+<td>1304</td>
+</tr>
+<tr>
+<td>185</td>
+<td>1306</td>
+</tr>
+<tr>
+<td>186</td>
+<td>1307</td>
+</tr>
+<tr>
+<td>187</td>
+<td>1308</td>
+</tr>
+<tr>
+<td>188</td>
+<td>1310</td>
+</tr>
+<tr>
+<td>189</td>
+<td>1311</td>
+</tr>
+<tr>
+<td>190</td>
+<td>1312</td>
+</tr>
+<tr>
+<td>191</td>
+<td>1314</td>
+</tr>
+<tr>
+<td>192</td>
+<td>1315</td>
+</tr>
+<tr>
+<td>193</td>
+<td>1316</td>
+</tr>
+<tr>
+<td>194</td>
+<td>1317</td>
+</tr>
+<tr>
+<td>195</td>
+<td>1319</td>
+</tr>
+<tr>
+<td>196</td>
+<td>1320</td>
+</tr>
+<tr>
+<td>197</td>
+<td>1321</td>
+</tr>
+<tr>
+<td>198</td>
+<td>1323</td>
+</tr>
+<tr>
+<td>199</td>
+<td>1324</td>
+</tr>
+<tr>
+<td>200</td>
+<td>1325</td>
+</tr>
+<tr>
+<td>201</td>
+<td>1326</td>
+</tr>
+<tr>
+<td>202</td>
+<td>1328</td>
+</tr>
+<tr>
+<td>203</td>
+<td>1329</td>
+</tr>
+<tr>
+<td>204</td>
+<td>1330</td>
+</tr>
+<tr>
+<td>205</td>
+<td>1331</td>
+</tr>
+<tr>
+<td>206</td>
+<td>1332</td>
+</tr>
+<tr>
+<td>207</td>
+<td>1334</td>
+</tr>
+<tr>
+<td>208</td>
+<td>1335</td>
+</tr>
+<tr>
+<td>209</td>
+<td>1336</td>
+</tr>
+<tr>
+<td>210</td>
+<td>1337</td>
+</tr>
+<tr>
+<td>211</td>
+<td>1338</td>
+</tr>
+<tr>
+<td>212</td>
+<td>1340</td>
+</tr>
+<tr>
+<td>213</td>
+<td>1341</td>
+</tr>
+<tr>
+<td>214</td>
+<td>1342</td>
+</tr>
+<tr>
+<td>215</td>
+<td>1343</td>
+</tr>
+<tr>
+<td>216</td>
+<td>1344</td>
+</tr>
+<tr>
+<td>217</td>
+<td>1345</td>
+</tr>
+<tr>
+<td>218</td>
+<td>1347</td>
+</tr>
+<tr>
+<td>219</td>
+<td>1348</td>
+</tr>
+<tr>
+<td>220</td>
+<td>1349</td>
+</tr>
+<tr>
+<td>221</td>
+<td>1350</td>
+</tr>
+<tr>
+<td>222</td>
+<td>1351</td>
+</tr>
+<tr>
+<td>223</td>
+<td>1352</td>
+</tr>
+<tr>
+<td>224</td>
+<td>1353</td>
+</tr>
+<tr>
+<td>225</td>
+<td>1355</td>
+</tr>
+<tr>
+<td>226</td>
+<td>1356</td>
+</tr>
+<tr>
+<td>227</td>
+<td>1357</td>
+</tr>
+<tr>
+<td>228</td>
+<td>1358</td>
+</tr>
+<tr>
+<td>229</td>
+<td>1359</td>
+</tr>
+<tr>
+<td>230</td>
+<td>1360</td>
+</tr>
+<tr>
+<td>231</td>
+<td>1361</td>
+</tr>
+<tr>
+<td>232</td>
+<td>1362</td>
+</tr>
+<tr>
+<td>233</td>
+<td>1363</td>
+</tr>
+<tr>
+<td>234</td>
+<td>1364</td>
+</tr>
+<tr>
+<td>235</td>
+<td>1365</td>
+</tr>
+<tr>
+<td>236</td>
+<td>1366</td>
+</tr>
+<tr>
+<td>237</td>
+<td>1368</td>
+</tr>
+<tr>
+<td>238</td>
+<td>1369</td>
+</tr>
+<tr>
+<td>239</td>
+<td>1370</td>
+</tr>
+<tr>
+<td>240</td>
+<td>1371</td>
+</tr>
+<tr>
+<td>241</td>
+<td>1372</td>
+</tr>
+<tr>
+<td>242</td>
+<td>1373</td>
+</tr>
+<tr>
+<td>243</td>
+<td>1374</td>
+</tr>
+<tr>
+<td>244</td>
+<td>1375</td>
+</tr>
+<tr>
+<td>245</td>
+<td>1376</td>
+</tr>
+<tr>
+<td>246</td>
+<td>1377</td>
+</tr>
+<tr>
+<td>247</td>
+<td>1378</td>
+</tr>
+<tr>
+<td>248</td>
+<td>1379</td>
+</tr>
+<tr>
+<td>249</td>
+<td>1380</td>
+</tr>
+<tr>
+<td>250</td>
+<td>1381</td>
+</tr>
+<tr>
+<td>251</td>
+<td>1382</td>
+</tr>
+<tr>
+<td>252</td>
+<td>1383</td>
+</tr>
+<tr>
+<td>253</td>
+<td>1384</td>
+</tr>
+<tr>
+<td>254</td>
+<td>1385</td>
+</tr>
+<tr>
+<td>255</td>
+<td>1386</td>
+</tr>
+</tbody>
+</table>
+
+			<div class="docs-navigation d-flex justify-content-between">
+	
+	<a href="https://docs.just.win/docs/developer-guide/buy/">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					&larr; Buy
+				</div>
+			</div>
+		</a>
+	<a class="ml-auto" href="https://docs.just.win/docs/developer-guide/withdraw/">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					Withdraw &rarr;
+				</div>
+			</div>
+		</a>
+	</div>
+
+		</main>
+	</div>
+
+      </div>
+    </div>
+    
+    
+    <footer class="footer text-muted">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 order-last order-lg-first">
+        <ul class="list-inline">
+          <li class="list-inline-item">Powered by the Just Win team. Funded by Gnosis.</li>
+        </ul>
+      </div>
+      <div class="col-lg-8 order-first order-lg-last text-lg-right">
+        <ul class="list-inline">
+          </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+    <script src="https://docs.just.win/main.f6b484f556ad1f3bcf6061082139a2f21fa759f13930c39a25fe4a9f78f35e64122c2d86dffd56e67b292dabbda4095d8077194f196e0e348441c106a9f3d40e.js" integrity="sha512-9rSE9VatHzvPYGEIITmi8h&#43;nWfE5MMOaJf5Kn3jzXmQSLC2G3/1W5nspLau9pAldgHcZTxluDjSEQcEGqfPUDg==" crossorigin="anonymous" defer></script>
+  <script src="https://docs.just.win/index.min.1c6c128a1f197402132837552a161644ecaeebc545a18e7c1b0d17302263134a106391f9f61fff385bde33b48b6c50a98c97e30fa157fb237132ce0628702f3c.js" integrity="sha512-HGwSih8ZdAITKDdVKhYWROyu68VFoY58Gw0XMCJjE0oQY5H59h//OFveM7SLbFCpjJfjD6FX&#43;yNxMs4GKHAvPA==" crossorigin="anonymous" defer></script>
+
+  </body>
+</html>
