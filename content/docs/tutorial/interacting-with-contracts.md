@@ -1,5 +1,5 @@
 ---
-title: "Interacting with contracts"
+title: "Interacting with Contracts"
 description: ""
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
@@ -33,7 +33,8 @@ Now that you have minted 1000 Dai, you need to allow the LsLMSR contract to spen
 
 Now you will need to select the LsLMSR and run the setup() function. This has a number of parameters which we will discuss:
 
-![](https://lh4.googleusercontent.com/uPamXuVj6xYZVsv242pvZTejn92v5T8IFlgh3cTLdtCq2F6HfP9NCF5dX1h2Z_AlrE296v3LWFBdtGLulYKcf6-uaPoAXo4PDpniYSXDb0Am3BJXTuPetEjLLxBY_iSCOlKKBGWb)
+<img src="https://raw.githubusercontent.com/justwin-github/docs/main/images/setup0.png" width="100">
+
 
 -   _oracle will be an address that refers to either an externally owned address, or a smart contract. The prediction market will remain open until this oracle address tells the prediction market what the outcome of the event was. We invite you to read the oracle page for different ideas of what to put here. For our testing purposes, we can use the address for our account. This will be easy for us to report the outcome at the end of our tutorial
 
@@ -59,7 +60,7 @@ _overround will be 450. This books us 4.5% profit
 
 Your setup will look like this:
 
-![](https://lh5.googleusercontent.com/_BVFTPIiCAhmuoQ6kKIB8_MyHnYzemQubty6cAN7utmf7V928qORIzKSdYLGaeYu6hzGyLWnymdylxJfNQAeocZYFU9UlQPaEsYPAXOpgmjoWFHglX6zfRe_PV_34nf5G1KeDk-0)
+<img src="https://raw.githubusercontent.com/justwin-github/docs/main/images/setup1.png" width="100">
 
 Once you submit this transaction, the prediction market will be ready for users to interact with!
 
@@ -105,7 +106,7 @@ The questionId is the ID that we used earlier.
 
 The payout variable takes an array of the relative payout for each outcome. As we chose three outcomes, we will need to enter an array with three variables here. If you wanted to report that the Chiefs won, you will enter this outcome as a 1 (which means each outcome token can be redeemed for 1 base currency) and the rest as zero. 
 
-![](https://lh4.googleusercontent.com/oaoc1rOrI99WmV97cEG2gpDtik1cgjOmRux5Pu7eXEcK-Oj43159ec6S53PxL9wYphZgJy1MV65t5Pun2jnTK0c0dNsmWjsvfwl3ha0RPQcDmX89cwhnNqHqFLE3G7tr8lpeCLGu)
+<img src="https://raw.githubusercontent.com/justwin-github/docs/main/images/reportpayouts.png" width="100">
 
 Now that you have done this, you can claim your reward for the successful portion of your position. You do this with the redeemPositions() function. This function takes your outcome tokens and then converts them back into the base currency token. The redeemPositions() function takes the following parameters:
 
